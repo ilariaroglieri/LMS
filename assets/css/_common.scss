@@ -21,9 +21,10 @@ $accentColor: #F01D1D;
 // SPACING
 // =============================
 
-$spacing: clamp(10px, .9vw, 18px);
-$half-spacing: calc(#{$spacing} / 2);
-$double-spacing: calc(#{$spacing} * 2);
+$spacing: 12px;
+$half-spacing: calc($spacing / 2);
+$double-spacing: calc($spacing * 2);
+$triple-spacing: calc($spacing * 3);
 
 $col: 8.3333%; // 12 columns
 
@@ -33,19 +34,10 @@ $col: 8.3333%; // 12 columns
 // =============================
 
 @font-face {
-  font-family: 'NB Akademie Mono';
-  src: url('../fonts/nb_akademie_mono_regular-webfont.woff2') format('woff2'),
-       url('../fonts/nb_akademie_mono_regular-webfont.woff') format('woff'),
-       url('../fonts/nb_akademie_mono_regular-webfont.otf') format('otf'),
-       url('../fonts/nb_akademie_mono_regular-webfont.ttf') format('ttf');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'NB National';
-  src: url('../fonts/NBNationalStdRegularWebfont.woff2') format('woff2'),
-       url('../fonts/NBNationalStdRegularWebfont.woff') format('woff'),
-       url('../fonts/NBNationalStdRegularWebfont.eot') format('eot');
+  font-family: 'Venezia';
+  src: url('../fonts/Venezia.woff2') format('woff2'),
+       url('../fonts/Venezia.woff') format('woff'),
+       url('../fonts/Venezia.ttf') format('ttf');
   font-weight: 400;
 }
 
@@ -58,16 +50,14 @@ $col: 8.3333%; // 12 columns
   text-transform: uppercase;
 }
 
-.mono {
-  font-family: 'NB Akademie Mono';
-}
 
 $font-sizes: (
-  'large':   clamp(24px, 1.5vw, 29px),
-  'medium':  clamp(24px, 1.4vw, 27px),
-  'regular': clamp(18px, 1.1vw, 21px),
-  'small':   clamp(12px, 0.7vw, 13px),
-  'xsmall': clamp(11px, 0.6vw, 12px),
+  'huge': clamp(56px, 7.29vw, 105px),
+  'large': clamp(36px, 3.06vw, 44px),
+  'medium':  clamp(24px, 1.94vw, 28px),
+  'regular-2': clamp(20px, 1.67vw, 24px),
+  'regular': clamp(16px, 1.39vw, 20px),
+  'small': clamp(12px, 1.11vw, 16px),
 );
 
 @each $name, $size in $font-sizes {
