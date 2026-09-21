@@ -1,0 +1,184 @@
+// =============================
+// BREAKPOINTS
+// =============================
+
+$desktop: 1440px;
+$tablet: 768px;
+$mobile: 640px;
+
+
+// =============================
+// COLORS
+// =============================
+
+$primaryColor: #414141;
+$secColor: #ECEBDD;
+$accentColor: #F01D1D;
+
+
+
+// =============================
+// SPACING
+// =============================
+
+$spacing: clamp(10px, .9vw, 18px);
+$half-spacing: calc(#{$spacing} / 2);
+$double-spacing: calc(#{$spacing} * 2);
+
+$col: 8.3333%; // 12 columns
+
+
+// =============================
+// FONTS
+// =============================
+
+@font-face {
+  font-family: 'NB Akademie Mono';
+  src: url('../fonts/nb_akademie_mono_regular-webfont.woff2') format('woff2'),
+       url('../fonts/nb_akademie_mono_regular-webfont.woff') format('woff'),
+       url('../fonts/nb_akademie_mono_regular-webfont.otf') format('otf'),
+       url('../fonts/nb_akademie_mono_regular-webfont.ttf') format('ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'NB National';
+  src: url('../fonts/NBNationalStdRegularWebfont.woff2') format('woff2'),
+       url('../fonts/NBNationalStdRegularWebfont.woff') format('woff'),
+       url('../fonts/NBNationalStdRegularWebfont.eot') format('eot');
+  font-weight: 400;
+}
+
+
+// =============================
+// TYPOGRAPHY
+// =============================
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.mono {
+  font-family: 'NB Akademie Mono';
+}
+
+$font-sizes: (
+  'large':   clamp(24px, 1.5vw, 29px),
+  'medium':  clamp(24px, 1.4vw, 27px),
+  'regular': clamp(18px, 1.1vw, 21px),
+  'small':   clamp(12px, 0.7vw, 13px),
+  'xsmall': clamp(11px, 0.6vw, 12px),
+);
+
+@each $name, $size in $font-sizes {
+  .s-#{$name} {
+    font-size: $size;
+  }
+}
+
+
+// =============================
+// CSS CUSTOM PROPERTIES
+// =============================
+
+:root {
+  --spacing: #{$spacing};
+  --half-spacing: #{$half-spacing};
+  --double-spacing: #{$double-spacing};
+
+  @each $name, $value in $font-sizes {
+    --s-#{$name}: #{$value};
+  }
+}
+
+
+// =============================
+// COLUMN SYSTEM (12 grid)
+// =============================
+
+@for $i from 1 through 11 {
+  .d-#{$i}-twelfth {
+    width: calc(#{$col} * #{$i});
+  }
+}
+
+$d-aliases: (
+  one-third: 4,
+  half: 6,
+  two-thirds: 8
+);
+
+@each $name, $val in $d-aliases {
+  .d-#{$name} {
+    width: calc(#{$col} * #{$val});
+  }
+}
+
+.d-whole {
+  width: 100%;
+}
+
+
+// =============================
+// SPACING SCALE
+// =============================
+
+$spacing-scale: (
+  0:    0,
+  tiny: calc(#{$half-spacing} / 4),
+  half: calc(#{$half-spacing} / 2),
+  1:    $half-spacing,
+  2:    calc(#{$half-spacing} * 2),
+  3:    calc(#{$half-spacing} * 3),
+  4:    calc(#{$half-spacing} * 4),
+  5:    calc(#{$half-spacing} * 5),
+  6:    calc(#{$half-spacing} * 6),
+  7:    calc(#{$half-spacing} * 7),
+  8:    calc(#{$half-spacing} * 8),
+  9:    calc(#{$half-spacing} * 9),
+  10:   calc(#{$half-spacing} * 10),
+  11:   calc(#{$half-spacing} * 11),
+  12:   calc(#{$half-spacing} * 12),
+);
+
+@mixin generate-spacing($prefix, $property) {
+  @each $key, $value in $spacing-scale {
+    .#{$prefix}-#{$key} {
+      #{$property}: $value;
+    }
+  }
+}
+
+
+// =============================
+// SPACING UTILITIES — DESKTOP
+// =============================
+
+@include generate-spacing("spacing-b",   margin-bottom);
+@include generate-spacing("spacing-t",   margin-top);
+@include generate-spacing("spacing-p-b", padding-bottom);
+@include generate-spacing("spacing-p-t", padding-top);
+
+
+// =============================
+// SPACING UTILITIES — TABLET
+// =============================
+
+@media screen and (max-width: $tablet) {
+  @include generate-spacing("spacing-t-b",   margin-bottom);
+  @include generate-spacing("spacing-t-t",   margin-top);
+  @include generate-spacing("spacing-t-p-b", padding-bottom);
+  @include generate-spacing("spacing-t-p-t", padding-top);
+}
+
+
+// =============================
+// SPACING UTILITIES — MOBILE
+// =============================
+
+@media screen and (max-width: $mobile) {
+  @include generate-spacing("spacing-m-b",   margin-bottom);
+  @include generate-spacing("spacing-m-t",   margin-top);
+  @include generate-spacing("spacing-m-p-b", padding-bottom);
+  @include generate-spacing("spacing-m-p-t", padding-top);
+}

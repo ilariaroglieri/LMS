@@ -1,0 +1,306 @@
+@use 'common' as *;
+
+:root {
+  --module-h: 0;
+}
+
+*,
+*:after,
+*:before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline:0;
+}
+
+
+//varie & eventuali
+.d-inline-block {
+  display: inline-block;
+}
+
+.t-visible, .m-visible {
+  display: none;
+}
+
+.d-flex {
+  display: flex;
+  &.d-row-reverse {
+    flex-flow: row-reverse;
+  }
+  &.d-column {
+    flex-flow: column;
+  }
+  &.center {
+    align-items: center;
+  }
+  &.v-center {
+    justify-content: center;
+  }
+  &.top {
+    align-items: flex-start;
+  }
+  &.baseline {
+    align-items: baseline;
+  }
+  &.bottom {
+    align-items: flex-end;
+  }
+  &.flex-end,
+  &.align-right {
+    justify-content: flex-end;
+  }
+  &.space-between {
+    justify-content: space-between;
+  }
+  &.wrap {
+    flex-wrap: wrap;
+  }
+  &.grow {
+    flex: 1;
+  }
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-fixed {
+  position:fixed;
+}
+
+.overall {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  font-size: 0pt;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.t-right {
+  text-align: right;
+}
+
+.t-left {
+  text-align: left;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.primaryColor {
+  color: $primaryColor;
+}
+
+.secColor {
+  color: $secColor;
+}
+
+.wysiwyg {
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+  ul {
+    list-style-type: "•";
+    margin-left: var(--half-spacing);
+    li {
+      padding-left:var(--half-spacing);
+    }
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+
+
+/* basic elements */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'NB National';
+  line-height: 1.3;
+  @extend .s-regular;
+  text-rendering: geometricPrecision;
+  color: $primaryColor;
+  background-color: $secColor;
+  overflow-x: hidden;
+}
+
+p {
+  margin:0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+a {
+  color:$primaryColor;
+  text-decoration: none;
+  transition: color .3s;
+  &:hover {
+    color: $accentColor;
+  }
+}
+
+ul {
+  margin:0;
+  padding-left:0;
+  list-style-type: none;
+}
+
+figure {
+  position: relative;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    object-position: var(--focus, center);
+    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    figcaption {
+      opacity: 1;
+      bottom: 0;
+    }
+  }
+
+  figcaption {
+    position: absolute;
+    left: 0;
+    bottom: -100px;
+    width: 90%;
+    background-color: $secColor;
+    opacity: 0;
+    padding: var(--half-spacing);
+    transition: all .5s;
+  }
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .75s ease;
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.container {
+  width: calc(100% - var(--spacing) * 4);
+  margin: var(--double-spacing);
+  .module {
+    height: var(--module-h);
+    overflow:hidden;
+    padding: 0 var(--half-spacing);
+    .element {
+      padding: var(--spacing);
+      padding-bottom: var(--double-spacing);
+      &[data-span-x='.5'] {
+        figure.portrait {
+          height: calc(var(--module-h) * 1 - var(--double-spacing)) 
+        }
+      }
+      &[data-span-x='1'] {
+        figure.landscape {
+          height: calc(var(--module-h) * 1 - var(--double-spacing))
+        }
+        figure.portrait {
+          height: calc(var(--module-h) * 2 - var(--double-spacing))
+        }
+      }
+      &[data-span-x='2'] {
+        figure.landscape {
+          height: calc(var(--module-h) * 2 - var(--double-spacing))
+        }
+      }
+      &[data-span-x='3'] {
+        figure.landscape {
+          height: calc(var(--module-h) * 3 - var(--double-spacing))
+        }
+      }
+    }
+    &.text-module {
+      .text {
+        background-color: $secColor;
+      }
+    }
+  }
+}
+
+.container-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.flex-row {
+  gap: var(--double-spacing);
+}
+
+header {
+  #site-logo {
+    svg {
+      width: 100%;
+    }
+  }
+  nav {
+    ul li {
+      padding: var(--half-spacing) 0;
+      border-bottom: 1px solid $primaryColor;
+      &:first-of-type {
+        padding-top: 0;
+      }
+      a {
+        &.active {
+          color: $accentColor;
+          pointer-events: none;
+        }
+        &.lang-active {
+          opacity: .4;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
+main {
+}
+
+section {
+  
+}
+
+
+footer {
+}
