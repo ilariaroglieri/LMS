@@ -21,8 +21,6 @@
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"/>
 		<link rel="shortcut icon" href="<?php echo home_url( '/favicon.ico' ); ?>">
 
-
-		<link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>'/assets/css/style.css' ); ?>" type="text/css">	
 		<?php wp_head(); ?>
 	
 	</head>

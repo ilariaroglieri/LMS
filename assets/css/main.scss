@@ -76,10 +76,13 @@
   position:fixed;
 }
 
-.overall::after {
-  content: '';
+.overall {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
 }
 
 .full-width {
@@ -292,6 +295,11 @@ $delays: (0s, -12s, -3s, -10.5s, -6s, -7.5s, -9s, -4.5s, -1.5s, -13.5s);
 main {
   section.project {
     position: relative;
+    a.overall:hover {
+      & + .project-title-wrap .project-title-track  {
+        animation-play-state: paused !important;
+      }
+    }
     .project-title-wrap {
       overflow: hidden;
       position: relative;
@@ -300,9 +308,6 @@ main {
         cursor: pointer;
         animation-delay: var(--random-delay) !important;
         animation-play-state: running;
-        &:hover {
-          animation-play-state: paused !important;
-        }
         .project-title {
           display: inline-block; 
           padding-top: var(--double-spacing);
@@ -313,6 +318,9 @@ main {
         &.is-long {
           width: max-content;
           animation: marquee-long 20s linear infinite;
+          .project-title {
+            margin-right: var(--double-spacing);
+          }
         }
         &.is-short {
           position: relative;
@@ -323,11 +331,33 @@ main {
         }
       }
     }
-    img {
+    .project-category {
+      position: absolute;
+      top: 50%;
+      left: var(--double-spacing);
+      transform: translateY(-50%);
+      z-index: -1;
+      &[data-cat*="publishing"] {
+        color: $accentColorPub;
+      }
+      &[data-cat*="curatela"],
+      &[data-cat*="curatorship"] {
+        color: $accentColorCur;
+      }
+      &[data-cat*="consulting"] {
+        color: $accentColorCons;
+      }
+    }
+    .project-thumb {
       position: absolute;
       top: 0;
       height: 100%;
       width: auto;
+      opacity: 0;
+      transition: opacity .3s .3s;
+      &.loaded {
+        opacity: 1;
+      }
     }
   }
 }

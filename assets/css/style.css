@@ -786,10 +786,13 @@ Version: 1.0
   position: fixed;
 }
 
-.overall::after {
-  content: "";
+.overall {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
 }
 
 .full-width {
@@ -1009,6 +1012,9 @@ header div[class*=menu-1] ul {
 main section.project {
   position: relative;
 }
+main section.project a.overall:hover + .project-title-wrap .project-title-track {
+  animation-play-state: paused !important;
+}
 main section.project .project-title-wrap {
   overflow: hidden;
   position: relative;
@@ -1018,9 +1024,6 @@ main section.project .project-title-wrap .project-title-track {
   cursor: pointer;
   animation-delay: var(--random-delay) !important;
   animation-play-state: running;
-}
-main section.project .project-title-wrap .project-title-track:hover {
-  animation-play-state: paused !important;
 }
 main section.project .project-title-wrap .project-title-track .project-title {
   display: inline-block;
@@ -1033,6 +1036,9 @@ main section.project .project-title-wrap .project-title-track.is-long {
   width: max-content;
   animation: marquee-long 20s linear infinite;
 }
+main section.project .project-title-wrap .project-title-track.is-long .project-title {
+  margin-right: var(--double-spacing);
+}
 main section.project .project-title-wrap .project-title-track.is-short {
   position: relative;
   animation: marquee-short 10s linear infinite;
@@ -1040,11 +1046,32 @@ main section.project .project-title-wrap .project-title-track.is-short {
 main section.project .project-title-wrap .project-title-track.is-short .project-title {
   width: 100vw;
 }
-main section.project img {
+main section.project .project-category {
+  position: absolute;
+  top: 50%;
+  left: var(--double-spacing);
+  transform: translateY(-50%);
+  z-index: -1;
+}
+main section.project .project-category[data-cat*=publishing] {
+  color: #93ff5a;
+}
+main section.project .project-category[data-cat*=curatela], main section.project .project-category[data-cat*=curatorship] {
+  color: #4058fb;
+}
+main section.project .project-category[data-cat*=consulting] {
+  color: #ccc;
+}
+main section.project .project-thumb {
   position: absolute;
   top: 0;
   height: 100%;
   width: auto;
+  opacity: 0;
+  transition: opacity 0.3s 0.3s;
+}
+main section.project .project-thumb.loaded {
+  opacity: 1;
 }
 
 @keyframes marquee-long {

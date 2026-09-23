@@ -16,3 +16,18 @@ document.fonts.ready.then(() => {
     }
 	})
 })
+
+
+function randomImg() {
+	document.querySelectorAll('.project-thumb').forEach(img => {
+		const vW  = window.innerWidth;
+		const imgW = img.getBoundingClientRect().width;
+
+		const randomPos = Math.floor(Math.random() * ((vW - imgW - 60) / 30)) * 30;
+
+		img.style.left = randomPos + 'px';
+		img.classList.add('loaded');
+	})
+}
+
+randomImg();
