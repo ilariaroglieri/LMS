@@ -966,6 +966,46 @@ header div[class*=menu-1] {
 header div[class*=menu-1] ul {
   display: contents;
 }
+.project:nth-child(1) .project-title-track {
+  --random-delay: 0s;
+}
+
+.project:nth-child(2) .project-title-track {
+  --random-delay: -12s;
+}
+
+.project:nth-child(3) .project-title-track {
+  --random-delay: -3s;
+}
+
+.project:nth-child(4) .project-title-track {
+  --random-delay: -10.5s;
+}
+
+.project:nth-child(5) .project-title-track {
+  --random-delay: -6s;
+}
+
+.project:nth-child(6) .project-title-track {
+  --random-delay: -7.5s;
+}
+
+.project:nth-child(7) .project-title-track {
+  --random-delay: -9s;
+}
+
+.project:nth-child(8) .project-title-track {
+  --random-delay: -4.5s;
+}
+
+.project:nth-child(9) .project-title-track {
+  --random-delay: -1.5s;
+}
+
+.project:nth-child(10) .project-title-track {
+  --random-delay: -13.5s;
+}
+
 main section.project {
   position: relative;
 }
@@ -975,6 +1015,12 @@ main section.project .project-title-wrap {
 }
 main section.project .project-title-wrap .project-title-track {
   display: flex;
+  cursor: pointer;
+  animation-delay: var(--random-delay) !important;
+  animation-play-state: running;
+}
+main section.project .project-title-wrap .project-title-track:hover {
+  animation-play-state: paused !important;
 }
 main section.project .project-title-wrap .project-title-track .project-title {
   display: inline-block;
@@ -985,18 +1031,14 @@ main section.project .project-title-wrap .project-title-track .project-title {
 }
 main section.project .project-title-wrap .project-title-track.is-long {
   width: max-content;
+  animation: marquee-long 20s linear infinite;
 }
 main section.project .project-title-wrap .project-title-track.is-short {
   position: relative;
+  animation: marquee-short 10s linear infinite;
 }
 main section.project .project-title-wrap .project-title-track.is-short .project-title {
-  position: absolute;
-  animation: marquee-short 15s linear infinite;
-}
-main section.project .project-title-wrap .project-title-track.is-short .project-title.clone {
-  transform: translateX(100vw);
-  animation: none;
-  animation: marquee-short-clone 15s linear infinite;
+  width: 100vw;
 }
 main section.project img {
   position: absolute;
@@ -1018,15 +1060,7 @@ main section.project img {
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-1 * var(--title-w) - 100vw));
-  }
-}
-@keyframes marquee-short-clone {
-  from {
-    transform: translateX(100vw);
-  }
-  to {
-    transform: translateX(calc(-1 * var(--title-w)));
+    transform: translateX(-100vw);
   }
 }
 @media screen and (max-width: 768px) {

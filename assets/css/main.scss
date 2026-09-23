@@ -281,6 +281,14 @@ header {
   }
 }
 
+$delays: (0s, -12s, -3s, -10.5s, -6s, -7.5s, -9s, -4.5s, -1.5s, -13.5s);
+
+@for $i from 1 through length($delays) {
+  .project:nth-child(#{$i}) .project-title-track {
+    --random-delay: #{nth($delays, $i)};
+  }
+}
+
 main {
   section.project {
     position: relative;
@@ -289,6 +297,12 @@ main {
       position: relative;
       .project-title-track {
         display: flex;
+        cursor: pointer;
+        animation-delay: var(--random-delay) !important;
+        animation-play-state: running;
+        &:hover {
+          animation-play-state: paused !important;
+        }
         .project-title {
           display: inline-block; 
           padding-top: var(--double-spacing);
@@ -298,18 +312,13 @@ main {
         }
         &.is-long {
           width: max-content;
-          // animation: marquee-long 20s linear infinite;
+          animation: marquee-long 20s linear infinite;
         }
         &.is-short {
           position: relative;
+          animation: marquee-short 10s linear infinite;
           .project-title {
-            position: absolute;
-            animation: marquee-short 15s linear infinite;
-            &.clone {
-              transform: translateX(100vw);
-              animation: none;
-              animation: marquee-short-clone 15s linear infinite;
-            }
+            width: 100vw;
           }
         }
       }
@@ -330,13 +339,18 @@ main {
 
 @keyframes marquee-short {
   from { transform: translateX(0); }
-  to   { transform: translateX(calc(-1 * var(--title-w) - 100vw)); }
+  to   { transform: translateX(-100vw); }
 }
 
-@keyframes marquee-short-clone {
-  from { transform: translateX(100vw); }
-  to   { transform: translateX(calc(-1 * var(--title-w))); }
-}
+// @keyframes marquee-short {
+//   from { transform: translateX(0); }
+//   to   { transform: translateX(calc(-1 * var(--title-w) - 100vw)); }
+// }
+
+// @keyframes marquee-short {
+//   from { transform: translateX(100vw); }
+//   to   { transform: translateX(calc(-1 * var(--title-w))); }
+// }
 
 
 section {
