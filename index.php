@@ -1,16 +1,17 @@
 <?php get_header(); ?>
 
-<section class="content" id="content-generic">
+<main class="container-fluid" id="content-home">
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-      <h2 class="entry-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-      <?php if ( has_post_thumbnail() ) : ?>  
-        <a  href="<?php the_permalink() ?>">          
-          <?php the_post_thumbnail(); ?>
-        </a>
-      <?php endif; ?>
-    </article>
+    <section id="project-<?php the_ID(); ?>" <?php post_class('project'); ?>>
+      <a href="<?php the_permalink(); ?>" class="overall" aria-label="<?php the_title(); ?>"></a>    
+      <div class="project-title-wrap">
+        <div class="project-title-track">
+          <span class="project-title uppercase s-huge"><?php the_title(); ?></span>
+        </div>
+      </div>
+      <?php if ( has_post_thumbnail() ) : the_post_thumbnail('medium'); endif; ?>
+    </section>
   
   <?php endwhile; else: ?>
 
@@ -19,6 +20,6 @@
 
   <?php endif; ?>
 
-</section>
+</main>
 
 <?php get_footer(); ?>

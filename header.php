@@ -22,29 +22,18 @@
 		<link rel="shortcut icon" href="<?php echo home_url( '/favicon.ico' ); ?>">
 
 
-		<link rel="stylesheet" href="<?php echo home_url( '/assets/css/style.css' ); ?>" type="text/css">	
-
-		<!-- <?php wp_enqueue_script("jquery"); ?>	 -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
+		<link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>'/assets/css/style.css' ); ?>" type="text/css">	
 		<?php wp_head(); ?>
 	
 	</head>
 
 	<body <?php body_class(); ?>>
-		<div id="container">
-			<div id="header">
-				<div id="logo">
-					<h2 class="site-name">
-						<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?>
-						</a>
-					</h2>
-				</div>
-
-				<button class="menu-toggle d-none">menu
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
-				<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
+		<header class="container d-flex flex-row">
+			<div id="logo" class="d-2-twelfth">
+				<a href="<?= home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+					<img src="<?= get_stylesheet_directory_uri() ?>/assets/img/LMS_logo.svg" alt="Luca Molinari Studio" />
+				</a>
 			</div>
+
+			<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
+		</header>

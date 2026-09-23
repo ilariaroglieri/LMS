@@ -76,13 +76,10 @@
   position:fixed;
 }
 
-.overall {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  font-size: 0pt;
+.overall::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 .full-width {
@@ -163,7 +160,7 @@ a {
   text-decoration: none;
   transition: color .3s;
   &:hover {
-    color: $accentColor;
+    color: $accentColorPub;
   }
 }
 
@@ -216,7 +213,7 @@ figure {
 }
 
 .container {
-  width: calc(100% - var(--spacing) * 4);
+  width: calc(100% - var(--double-spacing) * 2);
   margin: var(--double-spacing);
   .module {
     height: var(--module-h);
@@ -268,34 +265,79 @@ figure {
 }
 
 header {
-  #site-logo {
-    svg {
-      width: 100%;
+  #logo {
+    img {
+      width: 50%;
     }
   }
-  nav {
-    ul li {
-      padding: var(--half-spacing) 0;
-      border-bottom: 1px solid $primaryColor;
-      &:first-of-type {
-        padding-top: 0;
-      }
-      a {
-        &.active {
-          color: $accentColor;
-          pointer-events: none;
-        }
-        &.lang-active {
-          opacity: .4;
-          pointer-events: none;
-        }
+  div[class*="menu-1"] {
+    display: contents;
+    ul {
+      display: contents;
+      li {
+        @extend .d-2-twelfth;
       }
     }
   }
 }
 
 main {
+  section.project {
+    position: relative;
+    .project-title-wrap {
+      overflow: hidden;
+      position: relative;
+      .project-title-track {
+        display: flex;
+        .project-title {
+          display: inline-block; 
+          padding-top: var(--double-spacing);
+          line-height: 1;
+          flex-shrink: 0;
+          white-space: nowrap;
+        }
+        &.is-long {
+          width: max-content;
+          // animation: marquee-long 20s linear infinite;
+        }
+        &.is-short {
+          position: relative;
+          .project-title {
+            position: absolute;
+            animation: marquee-short 15s linear infinite;
+            &.clone {
+              transform: translateX(100vw);
+              animation: none;
+              animation: marquee-short-clone 15s linear infinite;
+            }
+          }
+        }
+      }
+    }
+    img {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: auto;
+    }
+  }
 }
+
+@keyframes marquee-long {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-short {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--title-w) - 100vw)); }
+}
+
+@keyframes marquee-short-clone {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(calc(-1 * var(--title-w))); }
+}
+
 
 section {
   
