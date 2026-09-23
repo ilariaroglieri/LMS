@@ -173,33 +173,6 @@ ul {
   list-style-type: none;
 }
 
-figure {
-  position: relative;
-  overflow: hidden;
-  img {
-    object-fit: cover;
-    object-position: var(--focus, center);
-    width: 100%;
-    height: 100%;
-  }
-  &:hover {
-    figcaption {
-      opacity: 1;
-      bottom: 0;
-    }
-  }
-
-  figcaption {
-    position: absolute;
-    left: 0;
-    bottom: -100px;
-    width: 90%;
-    background-color: $secColor;
-    opacity: 0;
-    padding: var(--half-spacing);
-    transition: all .5s;
-  }
-}
 
 .underlined {
   text-decoration: underline;
@@ -218,43 +191,6 @@ figure {
 .container {
   width: calc(100% - var(--double-spacing) * 2);
   margin: var(--double-spacing);
-  .module {
-    height: var(--module-h);
-    overflow:hidden;
-    padding: 0 var(--half-spacing);
-    .element {
-      padding: var(--spacing);
-      padding-bottom: var(--double-spacing);
-      &[data-span-x='.5'] {
-        figure.portrait {
-          height: calc(var(--module-h) * 1 - var(--double-spacing)) 
-        }
-      }
-      &[data-span-x='1'] {
-        figure.landscape {
-          height: calc(var(--module-h) * 1 - var(--double-spacing))
-        }
-        figure.portrait {
-          height: calc(var(--module-h) * 2 - var(--double-spacing))
-        }
-      }
-      &[data-span-x='2'] {
-        figure.landscape {
-          height: calc(var(--module-h) * 2 - var(--double-spacing))
-        }
-      }
-      &[data-span-x='3'] {
-        figure.landscape {
-          height: calc(var(--module-h) * 3 - var(--double-spacing))
-        }
-      }
-    }
-    &.text-module {
-      .text {
-        background-color: $secColor;
-      }
-    }
-  }
 }
 
 .container-fluid {
@@ -293,6 +229,19 @@ $delays: (0s, -12s, -3s, -10.5s, -6s, -7.5s, -9s, -4.5s, -1.5s, -13.5s);
 }
 
 main {
+  .journal-banner {
+    overflow: hidden;
+    position: relative;
+    .journal-track {
+      display: flex;
+      cursor: pointer;
+      width: max-content;
+      animation: marquee-long 10s linear infinite;
+      .journal-title {
+        margin-right: var(--double-spacing);
+      }
+    }
+  }
   section.project {
     position: relative;
     a.overall:hover {
@@ -382,10 +331,6 @@ main {
 //   to   { transform: translateX(calc(-1 * var(--title-w))); }
 // }
 
-
-section {
-  
-}
 
 
 footer {

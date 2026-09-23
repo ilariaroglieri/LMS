@@ -1,6 +1,29 @@
 <?php get_header(); ?>
 
 <main class="container-fluid" id="content-home">
+  <?php $args = array(
+    'post_type' => 'journal_entry',
+    'post_status' => 'publish',
+    'order' => 'DESC',
+    'orderby' => 'date',
+    'posts_per_page' => 3
+  );
+
+  $journalEntries = new WP_Query( $args );
+
+  if ( $journalEntries->have_posts() ): ?>
+    <div class="journal-banner">
+      <div class="journal-track">
+        <p class="journal-title">
+          <?php while ( $journalEntries->have_posts() ): $journalEntries->the_post(); ?>
+            <span class="s-medium"><?php the_title(); ?></span>
+          <?php endwhile ?>
+        </p>
+      </div>
+    </div>
+  <?php wp_reset_postdata(); endif; ?>
+
+
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <?php $categories = get_the_category(); ?>
 

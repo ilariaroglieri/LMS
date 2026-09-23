@@ -1,21 +1,29 @@
-document.fonts.ready.then(() => {
-	document.querySelectorAll('.project-title-track').forEach(track => {
-		const span = track.querySelector('.project-title');
-		const titleW = span.getBoundingClientRect().width;
-		const vW  = window.innerWidth;
+function marquees() {	
+	document.fonts.ready.then(() => {
+		//journal banner
+		const jt = document.querySelector('.journal-track');
+		const span = jt.querySelector('.journal-title');
+		jt.appendChild(span.cloneNode(true));
 
-		if (titleW >= vW) {
-			track.classList.add('is-long');
-      track.appendChild(span.cloneNode(true));
-		} else {
-      track.classList.add('is-short');
+		// projects list
+		document.querySelectorAll('.project-title-track').forEach(track => {
+			const span = track.querySelector('.project-title');
+			const titleW = span.getBoundingClientRect().width;
+			const vW  = window.innerWidth;
 
-      const clone = span.cloneNode(true);
-      clone.classList.add('clone');
-      track.appendChild(clone);
-    }
+			if (titleW >= vW) {
+				track.classList.add('is-long');
+	      track.appendChild(span.cloneNode(true));
+			} else {
+	      track.classList.add('is-short');
+
+	      const clone = span.cloneNode(true);
+	      clone.classList.add('clone');
+	      track.appendChild(clone);
+	    }
+		})
 	})
-})
+}
 
 
 function randomImg() {
@@ -30,4 +38,5 @@ function randomImg() {
 	})
 }
 
+marquees();
 randomImg();
