@@ -25,7 +25,7 @@ function marquees() {
 	})
 }
 
-
+// homepage thumbnails
 function randomImg() {
 	document.querySelectorAll('.project-thumb').forEach(img => {
 		const vW  = window.innerWidth;
@@ -37,6 +37,19 @@ function randomImg() {
 		img.classList.add('loaded');
 	})
 }
+
+// single page slider
+const swiper = new Swiper('.swiper-slider', {
+  autoplay: false,
+  slidesPerView: 1,
+  centeredSlides: true,
+  loop: true,
+  effect: 'fade',
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  });
 
 marquees();
 randomImg();

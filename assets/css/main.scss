@@ -118,9 +118,6 @@
 }
 
 .wysiwyg {
-  p:last-of-type {
-    margin-bottom: 0;
-  }
   ul {
     list-style-type: "•";
     margin-left: var(--half-spacing);
@@ -136,6 +133,9 @@
     p {
       margin-bottom: var(--double-spacing);
     }
+  }
+  p:last-of-type {
+    margin-bottom: 0;
   }
 }
 
@@ -347,6 +347,21 @@ article {
     margin-left: $col*1.5;
     .project-info-label {
       padding-right: $col;
+    }
+  }
+  #project-carousel {
+    .swiper-slider {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative;
+      .swiper-slide {
+        background-color: white;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
     }
   }
 }
