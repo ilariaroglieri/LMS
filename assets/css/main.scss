@@ -237,8 +237,13 @@ main {
       cursor: pointer;
       width: max-content;
       animation: marquee-long 10s linear infinite;
-      .journal-title {
-        margin-right: var(--double-spacing);
+      &:hover {
+        animation-play-state: paused;
+      }
+      .journal-titles {
+        span {
+          margin-right: var(--spacing);
+        }
       }
     }
   }

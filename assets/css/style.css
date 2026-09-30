@@ -6,7 +6,7 @@ Version: 1.0
 */
 @font-face {
   font-family: "Venezia";
-  src: url("../fonts/Venezia.woff2") format("woff2"), url("../fonts/Venezia.woff") format("woff"), url("../fonts/Venezia.ttf") format("ttf");
+  src: url("../fonts/tt-venezia-regular-5.woff2") format("woff2"), url("../fonts/tt-venezia-regular-5.woff") format("woff");
   font-weight: 400;
 }
 .uppercase {
@@ -967,8 +967,11 @@ main .journal-banner .journal-track {
   width: max-content;
   animation: marquee-long 10s linear infinite;
 }
-main .journal-banner .journal-track .journal-title {
-  margin-right: var(--double-spacing);
+main .journal-banner .journal-track:hover {
+  animation-play-state: paused;
+}
+main .journal-banner .journal-track .journal-titles span {
+  margin-right: var(--spacing);
 }
 main section.project {
   position: relative;
