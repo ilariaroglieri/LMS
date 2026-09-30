@@ -131,6 +131,12 @@
   a {
     text-decoration: underline;
   }
+  &.s-regular-2 {
+    @extend .s-regular-2;
+    p {
+      margin-bottom: var(--double-spacing);
+    }
+  }
 }
 
 
@@ -150,12 +156,16 @@ body {
 }
 
 p {
-  margin:0;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   line-height: 1.2;
+}
+
+h1 {
+  line-height: 1;
 }
 
 a {
@@ -172,7 +182,6 @@ ul {
   padding-left:0;
   list-style-type: none;
 }
-
 
 .underlined {
   text-decoration: underline;
@@ -232,11 +241,14 @@ main {
   .journal-banner {
     overflow: hidden;
     position: relative;
+    padding: calc(var(--half-spacing)/2) 0;
+    border-top: 1px solid $primaryColor;
+    border-bottom: 1px solid $primaryColor;
     .journal-track {
       display: flex;
       cursor: pointer;
       width: max-content;
-      animation: marquee-long 10s linear infinite;
+      animation: marquee-long 18s linear infinite;
       &:hover {
         animation-play-state: paused;
       }
@@ -326,17 +338,20 @@ main {
   to   { transform: translateX(-100vw); }
 }
 
-// @keyframes marquee-short {
-//   from { transform: translateX(0); }
-//   to   { transform: translateX(calc(-1 * var(--title-w) - 100vw)); }
-// }
-
-// @keyframes marquee-short {
-//   from { transform: translateX(100vw); }
-//   to   { transform: translateX(calc(-1 * var(--title-w))); }
-// }
-
+//---- SINGLE PROJECT
+article {
+  #project-img img {
+    width: 100%;
+  }
+  #project-txt, #project-info {
+    margin-left: $col*1.5;
+    .project-info-label {
+      padding-right: $col;
+    }
+  }
+}
 
 
 footer {
+  display: none;
 }
