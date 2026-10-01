@@ -968,8 +968,8 @@ main .journal-banner {
   overflow: hidden;
   position: relative;
   padding: calc(var(--half-spacing) / 2) 0;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
 }
 main .journal-banner .journal-track {
   display: flex;
@@ -1088,19 +1088,27 @@ article #project-carousel .swiper-slider .swiper-slide img {
 }
 article #project-carousel .swiper-slider .swiper-navi .swiper-button-prev {
   left: var(--double-spacing);
+  transition: all 0.3s;
 }
 article #project-carousel .swiper-slider .swiper-navi .swiper-button-prev:after {
   content: url("../img/LMS_arrow_left.svg");
   font-size: 0;
   width: calc(var(--double-spacing) * 2);
 }
+article #project-carousel .swiper-slider .swiper-navi .swiper-button-prev:hover {
+  left: var(--spacing);
+}
 article #project-carousel .swiper-slider .swiper-navi .swiper-button-next {
   right: var(--double-spacing);
+  transition: all 0.3s;
 }
 article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:after {
   content: url("../img/LMS_arrow_right.svg");
   font-size: 0;
   width: calc(var(--double-spacing) * 2);
+}
+article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover {
+  right: var(--spacing);
 }
 
 footer {

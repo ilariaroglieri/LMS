@@ -25,24 +25,27 @@
             <?php the_content(); ?>
           </div>
 
-          <div id="project-carousel" class="spacing-b-6">
-            <div class="swiper-slider" data-reveal="parent">
-              <div class="swiper-wrapper">
-                <?php 
-                $media = get_field('project_carousel'); 
-                $size = 'full';
-                foreach ($media as $img): ?>
-                  <div class="swiper-slide">
-                    <?= wp_get_attachment_image( $img['ID'], $size ); ?>
-                  </div>
-                <?php endforeach; ?>
-              </div>
-              <div class="swiper-navi">
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+          <?php 
+            $media = get_field('project_carousel'); 
+            if ($media): ?>
+            <div id="project-carousel" class="spacing-b-6">
+              <div class="swiper-slider" data-reveal="parent">
+                <div class="swiper-wrapper">
+                  <?php 
+                  $size = 'full';
+                  foreach ($media as $img): ?>
+                    <div class="swiper-slide">
+                      <?= wp_get_attachment_image( $img['ID'], $size ); ?>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+                <div class="swiper-navi">
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
               </div>
             </div>
-          </div>
+          <?php endif; ?>
 
 
           <?php if( have_rows('project_credits') ): ?>
