@@ -2,8 +2,10 @@ function marquees() {
 	document.fonts.ready.then(() => {
 		//journal banner
 		const jt = document.querySelector('.journal-track');
-		const span = jt.querySelector('.journal-titles');
-		jt.appendChild(span.cloneNode(true));
+		if (jt) {
+			const span = jt.querySelector('.journal-titles');
+			jt.appendChild(span.cloneNode(true));
+		}
 
 		// projects list
 		document.querySelectorAll('.project-title-track').forEach(track => {

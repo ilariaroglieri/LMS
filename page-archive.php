@@ -32,7 +32,7 @@
           <?php endif; ?>
           <?php $categories = get_the_category(); 
           if ($categories): ?>
-            <h3 class="project-category uppercase s-small" data-cat="<?= $categories[0]->slug ?>"><?= esc_html( $categories[0]->name ); ?></h3>
+            <h3 class="project-category uppercase s-small spacing-b-half" data-cat="<?= $categories[0]->slug ?>"><?= esc_html( $categories[0]->name ); ?></h3>
           <?php endif; ?>
           <h2 class="s-regular uppercase"><?php the_title(); ?></h2>
         </div>

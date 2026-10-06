@@ -400,6 +400,16 @@ article {
     display: grid;
     grid-template-columns: 1fr 1fr;
     .single-project {
+      .project-category {
+        display: flex;
+        align-items: center;
+        &:before {
+          content: url('../img/LMS_arrow_right.svg');
+          display: flex;
+          height: .9vw;
+          margin-right: var(--spacing);
+        }
+      }
       figure {
         aspect-ratio: 16/10;
         img {
