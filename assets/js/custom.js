@@ -40,6 +40,23 @@ function randomImg() {
 	})
 }
 
+// journal accordion
+function journalAccordion() {
+	const jItem = document.querySelectorAll('.journal-item');
+
+	if (jItem) {
+		jItem.forEach(item => {
+			const btn = item.querySelector('.journal-header');
+
+			btn.addEventListener('click', function() {
+				console.log('click');
+        const content = btn.nextElementSibling;
+        content.classList.toggle('visible');
+      });
+		})
+	}
+}
+
 // single page slider
 const swiper = new Swiper('.swiper-slider', {
   autoplay: false,
@@ -55,3 +72,4 @@ const swiper = new Swiper('.swiper-slider', {
 
 marquees();
 randomImg();
+journalAccordion();

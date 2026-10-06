@@ -1177,14 +1177,19 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 #journal-container .journal-item:last-of-type {
   border-bottom: 2px solid #000;
 }
+#journal-container .journal-item .journal-title {
+  cursor: pointer;
+}
 #journal-container .journal-item .journal-content {
   max-height: 0;
   opacity: 0;
   transition: all 0.5s;
+  pointer-events: none;
 }
 #journal-container .journal-item .journal-content.visible {
   opacity: 1;
-  max-height: 1000vh;
+  max-height: 500vh;
+  pointer-events: all;
 }
 #journal-container .journal-item .journal-content .journal-content-inner {
   padding: var(--double-spacing) 0 var(--spacing);

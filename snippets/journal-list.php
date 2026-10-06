@@ -16,7 +16,7 @@ if ( $journalEntries->have_posts() ): ?>
       <div class="journal-item">
         <div class="journal-header">
           <h3 class="journal-date s-regular"><?= $date ?></h3>
-          <h2 class="journal-title s-regular"><a href="<?php the_permalink(); ?>"><?= $title; ?></a></h2>
+          <h2 class="journal-title s-regular"><?= $title; ?></h2>
         </div>
         <div class="journal-content">
           <div class="journal-content-inner">

@@ -457,13 +457,18 @@ article {
     &:last-of-type {
       border-bottom: 2px solid $primaryColor;
     }
+    .journal-title {
+      cursor: pointer;
+    }
     .journal-content {
       max-height: 0;
       opacity: 0;
       transition: all .5s;
+      pointer-events: none;
       &.visible {
         opacity: 1;
-        max-height: 1000vh;
+        max-height: 500vh;
+        pointer-events: all;
       }
       .journal-content-inner {
         padding: var(--double-spacing) 0 var(--spacing);
