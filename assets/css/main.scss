@@ -245,7 +245,7 @@ $delays: (0s, -12s, -3s, -10.5s, -6s, -7.5s, -9s, -4.5s, -1.5s, -13.5s);
 }
 
 main {
-  padding-top: 11vw;
+  padding-top: 12.5vw;
   .journal-banner {
     overflow: hidden;
     position: relative;
@@ -404,7 +404,8 @@ article {
 #content-archive {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  height: calc(100vh - var(--double-spacing));
+  height: 100vh;
+  margin-top: 0 !important;
   margin-bottom: 0 !important;
   #projects-container {
     display: grid;

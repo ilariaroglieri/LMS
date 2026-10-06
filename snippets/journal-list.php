@@ -9,7 +9,7 @@
 $journalEntries = new WP_Query( $args );
 
 if ( $journalEntries->have_posts() ): ?>
-  <div class="journal-list">
+  <div class="journal-list spacing-b-4">
     <?php while ( $journalEntries->have_posts() ): $journalEntries->the_post();
       $date = get_the_date('m/Y');
       $title = get_the_title(); ?>

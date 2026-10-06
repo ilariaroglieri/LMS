@@ -974,7 +974,7 @@ header div[class*=menu-1] ul {
 }
 
 main {
-  padding-top: 11vw;
+  padding-top: 12.5vw;
 }
 main .journal-banner {
   overflow: hidden;
@@ -1126,7 +1126,8 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 #content-archive {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  height: calc(100vh - var(--double-spacing));
+  height: 100vh;
+  margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 #content-archive #projects-container {
