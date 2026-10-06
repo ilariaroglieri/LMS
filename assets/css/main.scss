@@ -445,6 +445,7 @@ article {
 // --- JOURNAL LIST
 #journal-container {
   height: 100%;
+  padding-left: 4.16665vw; //half column
   overflow-y: scroll;
   scrollbar-width: none;
   &::-webkit-scrollbar {
@@ -456,10 +457,19 @@ article {
     &:last-of-type {
       border-bottom: 2px solid $primaryColor;
     }
-    .journal-content-inner {
-      padding: var(--double-spacing) 0 var(--spacing);
-      .journal-thumb {
-        display: flex;
+    .journal-content {
+      max-height: 0;
+      opacity: 0;
+      transition: all .5s;
+      &.visible {
+        opacity: 1;
+        max-height: 1000vh;
+      }
+      .journal-content-inner {
+        padding: var(--double-spacing) 0 var(--spacing);
+        .journal-thumb {
+          display: flex;
+        }
       }
     }
   }
