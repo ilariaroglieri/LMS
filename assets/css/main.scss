@@ -213,6 +213,13 @@ ul {
 }
 
 header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  margin: 0;
+  padding: var(--double-spacing);
   #logo {
     img {
       width: 50%;
@@ -238,6 +245,7 @@ $delays: (0s, -12s, -3s, -10.5s, -6s, -7.5s, -9s, -4.5s, -1.5s, -13.5s);
 }
 
 main {
+  padding-top: 11vw;
   .journal-banner {
     overflow: hidden;
     position: relative;
@@ -396,9 +404,17 @@ article {
 #content-archive {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  height: calc(100vh - var(--double-spacing));
+  margin-bottom: 0 !important;
   #projects-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .single-project {
       .project-category {
         display: flex;
@@ -420,6 +436,30 @@ article {
           height: 100%;
           object-fit: cover;
         }
+      }
+    }
+  }
+}
+
+
+// --- JOURNAL LIST
+#journal-container {
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .journal-item {
+    padding: var(--half-spacing) 0;
+    border-top: 2px solid $primaryColor;
+    &:last-of-type {
+      border-bottom: 2px solid $primaryColor;
+    }
+    .journal-content-inner {
+      padding: var(--double-spacing) 0 var(--spacing);
+      .journal-thumb {
+        display: flex;
       }
     }
   }

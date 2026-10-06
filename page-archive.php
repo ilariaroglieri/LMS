@@ -40,7 +40,9 @@
     </section>
   <?php wp_reset_postdata(); endif; ?>
 
-  <section id="journal-container">JOURNAL</section>
+  <section id="journal-container">
+    <?php get_template_part( 'snippets/journal-list' ); ?>
+  </section>
 
 </main>
 

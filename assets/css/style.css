@@ -915,6 +915,15 @@ ul {
   column-gap: var(--double-spacing);
 }
 
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  margin: 0;
+  padding: var(--double-spacing);
+}
 header #logo img {
   width: 50%;
 }
@@ -964,6 +973,9 @@ header div[class*=menu-1] ul {
   --random-delay: -13.5s;
 }
 
+main {
+  padding-top: 11vw;
+}
 main .journal-banner {
   overflow: hidden;
   position: relative;
@@ -1114,10 +1126,18 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 #content-archive {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  height: calc(100vh - var(--double-spacing));
+  margin-bottom: 0 !important;
 }
 #content-archive #projects-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+#content-archive #projects-container::-webkit-scrollbar {
+  display: none;
 }
 #content-archive #projects-container .single-project .project-category {
   display: flex;
@@ -1139,6 +1159,28 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 #content-archive #projects-container .single-project figure.landscape img {
   height: 100%;
   object-fit: cover;
+}
+
+#journal-container {
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+#journal-container::-webkit-scrollbar {
+  display: none;
+}
+#journal-container .journal-item {
+  padding: var(--half-spacing) 0;
+  border-top: 2px solid #000;
+}
+#journal-container .journal-item:last-of-type {
+  border-bottom: 2px solid #000;
+}
+#journal-container .journal-item .journal-content-inner {
+  padding: var(--double-spacing) 0 var(--spacing);
+}
+#journal-container .journal-item .journal-content-inner .journal-thumb {
+  display: flex;
 }
 
 footer {

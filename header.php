@@ -26,7 +26,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<header class="container d-flex flex-row">
+		<header class="d-flex flex-row">
 			<div id="logo" class="d-2-twelfth">
 				<a href="<?= home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 					<img src="<?= get_stylesheet_directory_uri() ?>/assets/img/LMS_logo.svg" alt="Luca Molinari Studio" />
