@@ -228,7 +228,9 @@ header {
   background-color: white;
   z-index: 1000;
   margin: 0;
-  padding: var(--double-spacing);
+  #header-row {
+    padding: var(--double-spacing);
+  }
   #logo {
     img {
       width: 50%;
@@ -253,29 +255,30 @@ $delays: (0s, -12s, -3s, -10.5s, -6s, -7.5s, -9s, -4.5s, -1.5s, -13.5s);
   }
 }
 
-main {
-  padding-top: var(--header-height);
-  .journal-banner {
-    overflow: hidden;
-    position: relative;
-    padding: calc(var(--half-spacing)/2) 0;
-    border-top: 2px solid $primaryColor;
-    border-bottom: 2px solid $primaryColor;
-    .journal-track {
-      display: flex;
-      cursor: pointer;
-      width: max-content;
-      animation: marquee-long 18s linear infinite;
-      &:hover {
-        animation-play-state: paused;
-      }
-      .journal-titles {
-        span {
-          margin-right: var(--spacing);
-        }
+.journal-banner {
+  overflow: hidden;
+  position: relative;
+  padding: calc(var(--half-spacing)/2) 0;
+  border-top: 2px solid $primaryColor;
+  border-bottom: 2px solid $primaryColor;
+  .journal-track {
+    display: flex;
+    cursor: pointer;
+    width: max-content;
+    animation: marquee-long 18s linear infinite;
+    &:hover {
+      animation-play-state: paused;
+    }
+    .journal-titles {
+      span {
+        margin-right: var(--spacing);
       }
     }
   }
+}
+
+main {
+  padding-top: var(--header-height);
   section.project {
     position: relative;
     a.overall:hover {
@@ -357,7 +360,7 @@ main {
 
 #project-panel {
   position: fixed;
-  top: calc(var(--header-height) + var(--marquee-height));
+  top: var(--header-height);
   bottom: 0;
   left: 0;
   right: 0;

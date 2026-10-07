@@ -931,6 +931,8 @@ header {
   background-color: white;
   z-index: 1000;
   margin: 0;
+}
+header #header-row {
   padding: var(--double-spacing);
 }
 header #logo img {
@@ -982,27 +984,28 @@ header div[class*=menu-1] ul {
   --random-delay: -13.5s;
 }
 
-main {
-  padding-top: var(--header-height);
-}
-main .journal-banner {
+.journal-banner {
   overflow: hidden;
   position: relative;
   padding: calc(var(--half-spacing) / 2) 0;
   border-top: 2px solid #000;
   border-bottom: 2px solid #000;
 }
-main .journal-banner .journal-track {
+.journal-banner .journal-track {
   display: flex;
   cursor: pointer;
   width: max-content;
   animation: marquee-long 18s linear infinite;
 }
-main .journal-banner .journal-track:hover {
+.journal-banner .journal-track:hover {
   animation-play-state: paused;
 }
-main .journal-banner .journal-track .journal-titles span {
+.journal-banner .journal-track .journal-titles span {
   margin-right: var(--spacing);
+}
+
+main {
+  padding-top: var(--header-height);
 }
 main section.project {
   position: relative;
@@ -1087,7 +1090,7 @@ main section.project .project-thumb.loaded {
 }
 #project-panel {
   position: fixed;
-  top: calc(var(--header-height) + var(--marquee-height));
+  top: var(--header-height);
   bottom: 0;
   left: 0;
   right: 0;

@@ -1,9 +1,6 @@
 <?php get_header(); ?>
 
 <main class="container-fluid" id="content-home">
-  
-  <?php get_template_part( 'snippets/journal-marquee' ); ?>
-
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
     <section id="project-<?php the_ID(); ?>" <?php post_class('project'); ?>>

@@ -60,11 +60,11 @@ function journalAccordion() {
 // dynamic height calculations
 function heightVariables() {
 	const header = document.querySelector('header');
-	const marquee = document.querySelector('#journal-banner');
+	// const marquee = document.querySelector('#journal-banner');
 
 	const setMainOffset = () => {
 	  document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
-	  document.documentElement.style.setProperty('--marquee-height', marquee.offsetHeight + 'px');
+	  // document.documentElement.style.setProperty('--marquee-height', marquee.offsetHeight + 'px');
 	};
 
 	setMainOffset();
@@ -74,11 +74,18 @@ function heightVariables() {
 // dynamic loading
 function dynamicLoad() {
   const panel = document.getElementById('project-panel');
+  if (!panel) return;
   const body = panel.querySelector('.project-panel-body');
   const close = panel.querySelector('.project-panel-close');
-  const endpoint = panel.dataset.endpoint;
+	const endpoint = panel.dataset.endpoint;
+  let slider = null;
 
-  async function loadProject(id) {
+	async function loadProject(id) {
+	  if (slider) {
+	    slider.destroy(true, true);
+	    slider = null;
+	  }
+
 	  body.classList.remove('loaded');
 	  body.innerHTML = '';
 
@@ -86,6 +93,7 @@ function dynamicLoad() {
 	  const data = await response.json();
 
 	  body.innerHTML = data.html;
+	  slider = initSlider(body);
 	  body.classList.add('loaded');
 	}
 
@@ -105,21 +113,27 @@ function dynamicLoad() {
 }
 
 // single page slider
-const swiper = new Swiper('.swiper-slider', {
-  autoplay: false,
-  slidesPerView: 1,
-  centeredSlides: true,
-  loop: true,
-  effect: 'fade',
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+function initSlider(root) {
+  const el = root.querySelector('.swiper-slider');
+  if (!el) return null;
+
+  return new Swiper(el, {
+    autoplay: false,
+    slidesPerView: 1,
+    centeredSlides: true,
+    loop: true,
+    effect: 'fade',
+    navigation: {
+      nextEl: el.querySelector('.swiper-button-next'),
+      prevEl: el.querySelector('.swiper-button-prev'),
+    },
   });
+}
 
 marquees();
 randomImg();
 journalAccordion();
+initSlider(document);
 
 heightVariables();
 dynamicLoad();

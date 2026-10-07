@@ -26,12 +26,18 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<header class="d-flex flex-row">
-			<div id="logo" class="d-2-twelfth">
-				<a href="<?= home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					<img src="<?= get_stylesheet_directory_uri() ?>/assets/img/LMS_logo.svg" alt="Luca Molinari Studio" />
-				</a>
+		<header> 
+			<div id="header-row" class="d-flex flex-row">
+				<div id="logo" class="d-2-twelfth">
+					<a href="<?= home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<img src="<?= get_stylesheet_directory_uri() ?>/assets/img/LMS_logo.svg" alt="Luca Molinari Studio" />
+					</a>
+				</div>
+
+				<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 			</div>
 
-			<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
+			<?php if (!is_page(3837)): 
+				get_template_part( 'snippets/journal-marquee' ); 
+			endif; ?>
 		</header>
