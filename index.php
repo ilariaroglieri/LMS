@@ -32,9 +32,14 @@
 </main>
 
 <div id="project-panel" class="project-panel" data-state="closed" role="dialog" aria-modal="true" aria-labelledby="project-title" tabindex="-1"
-     data-endpoint="<?= esc_url( rest_url( 'lms-theme/project/' ) ); ?>">
-  <button type="button" class="project-panel-close" data-panel-close aria-label="Close"></button>
-  <div class="container" data-panel-body></div>
+     data-endpoint="<?= esc_url( rest_url( 'lms/project/' ) ); ?>">
+  <button type="button" class="project-panel-close" data-panel-close aria-label="Close">
+    <svg version="1.1" x="0px" y="0px" viewBox="0 0 45.8 45.8" xml:space="preserve">
+      <line class="st0" x1="44.5" y1="1.3" x2="1.3" y2="44.5"/>
+      <line class="st0" x1="1.3" y1="1.3" x2="44.5" y2="44.5"/>
+    </svg>
+  </button>
+  <div class="container project-panel-body"></div>
 </div>
 
 <?php get_footer(); ?>

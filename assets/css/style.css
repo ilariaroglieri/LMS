@@ -886,6 +886,15 @@ ul {
   list-style-type: none;
 }
 
+button {
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  color: #000;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .underlined {
   text-decoration: underline;
 }
@@ -974,7 +983,7 @@ header div[class*=menu-1] ul {
 }
 
 main {
-  padding-top: 12.5vw;
+  padding-top: var(--header-height);
 }
 main .journal-banner {
   overflow: hidden;
@@ -1078,24 +1087,39 @@ main section.project .project-thumb.loaded {
 }
 #project-panel {
   position: fixed;
-  bottom: -100vh;
+  top: calc(var(--header-height) + var(--marquee-height));
+  bottom: 0;
   left: 0;
-  width: 100vw;
+  right: 0;
+  z-index: 10001;
+  overflow-y: auto;
   background-color: white;
-  height: 0;
+  transform: translateY(100%);
   opacity: 0;
-  transition: all 0.75s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0s 0.5s;
 }
 #project-panel[data-state=open] {
+  transform: translateY(0);
   opacity: 1;
-  height: 87.5vh;
-  bottom: 0;
-  overflow-y: scroll;
+  transition: transform 0.5s ease-in-out, opacity 0s 0s;
 }
 #project-panel button.project-panel-close {
   position: absolute;
   right: var(--spacing);
   top: var(--spacing);
+  width: calc(var(--spacing) * 3);
+  height: calc(var(--spacing) * 3);
+}
+#project-panel button.project-panel-close svg {
+  stroke: #000;
+  stroke-width: 3px;
+}
+#project-panel .project-panel-body {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+#project-panel .project-panel-body.loaded {
+  opacity: 1;
 }
 
 article #project-img img {

@@ -57,17 +57,51 @@ function journalAccordion() {
 	}
 }
 
+// dynamic height calculations
+function heightVariables() {
+	const header = document.querySelector('header');
+	const marquee = document.querySelector('#journal-banner');
+
+	const setMainOffset = () => {
+	  document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+	  document.documentElement.style.setProperty('--marquee-height', marquee.offsetHeight + 'px');
+	};
+
+	setMainOffset();
+	window.addEventListener('resize', setMainOffset);
+}
+
 // dynamic loading
-function dynamicLoad() {	
-	const panel = document.getElementById('project-panel');
+function dynamicLoad() {
+  const panel = document.getElementById('project-panel');
+  const body = panel.querySelector('.project-panel-body');
+  const close = panel.querySelector('.project-panel-close');
+  const endpoint = panel.dataset.endpoint;
 
-	document.addEventListener('click', (e) => {
-	  const link = e.target.closest('.project .overall');
-	  if (!link) return;
+  async function loadProject(id) {
+	  body.classList.remove('loaded');
+	  body.innerHTML = '';
 
-	  e.preventDefault();
-	  panel.dataset.state = 'open';
-	});
+	  const response = await fetch(endpoint + id);
+	  const data = await response.json();
+
+	  body.innerHTML = data.html;
+	  body.classList.add('loaded');
+	}
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('.project .overall');
+    if (!link) return;
+
+    e.preventDefault();
+    panel.dataset.state = 'open';
+    loadProject(link.dataset.id);
+  });
+
+  close.addEventListener('click', () => {
+    panel.dataset.state = 'closed';
+    body.innerHTML = '';
+  });
 }
 
 // single page slider
@@ -87,4 +121,5 @@ marquees();
 randomImg();
 journalAccordion();
 
+heightVariables();
 dynamicLoad();

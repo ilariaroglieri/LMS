@@ -9,7 +9,7 @@
 $journalEntries = new WP_Query( $args );
 
 if ( $journalEntries->have_posts() ): ?>
-  <div class="journal-banner">
+  <div id="journal-banner" class="journal-banner">
     <div class="journal-track">
       <p class="journal-titles">
         <?php while ( $journalEntries->have_posts() ): $journalEntries->the_post();
