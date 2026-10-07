@@ -1,7 +1,16 @@
 <?php get_header(); ?>
 
 <main class="container-fluid" id="content-home">
-  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+  <?php $args = array(
+    'post_type' => 'post',
+    'post_status' => 'publish',
+    'order' => 'DESC',
+    'orderby' => 'date',
+    'posts_per_page' => -1
+  );
+
+  $projects = new WP_Query( $args );
+  if ( $projects->have_posts() ) : while ( $projects->have_posts() ) : $projects->the_post(); ?>
 
     <section id="project-<?php the_ID(); ?>" <?php post_class('project'); ?>>
       <a href="<?php the_permalink(); ?>" class="overall" aria-label="<?php the_title(); ?>" data-id="<?php the_ID(); ?>"></a>    
@@ -20,13 +29,21 @@
       <?php if ( has_post_thumbnail() ) : the_post_thumbnail('medium', array('class' => 'project-thumb')); endif; ?>
     </section>
   
-  <?php endwhile; else: ?>
+  <?php endwhile; wp_reset_postdata(); else: ?>
 
     <h2>Woops...</h2>
     <p>Sorry, no posts found.</p>
 
   <?php endif; ?>
 </main>
+
+<div id="intro-panel">
+  <div id="intro-panel-inner" class="d-two-thirds">
+    <div class="wysiwyg s-large">
+      <?php the_content(); ?>
+    </div>
+  </div>
+</div>
 
 <div id="project-panel" class="project-panel" data-state="closed" role="dialog" aria-modal="true" aria-labelledby="project-title" tabindex="-1"
      data-endpoint="<?= esc_url( rest_url( 'lms/project/' ) ); ?>">

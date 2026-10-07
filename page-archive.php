@@ -2,7 +2,7 @@
 
 <main class="container grid-row" id="content-archive">
   
-    <?php $args = array(
+  <?php $args = array(
     'post_type' => 'post',
     'post_status' => 'publish',
     'order' => 'DESC',
@@ -10,11 +10,11 @@
     'posts_per_page' => -1
   );
 
-  $journalEntries = new WP_Query( $args );
+  $projects = new WP_Query( $args );
 
-  if ( $journalEntries->have_posts() ): ?>
+  if ( $projects->have_posts() ): ?>
     <section id="projects-container" class="d-grid grid-row">
-      <?php while ( $journalEntries->have_posts() ): $journalEntries->the_post();?>
+      <?php while ( $projects->have_posts() ): $projects->the_post();?>
         <div class="single-project p-relative spacing-b-6">
           <a class="p-absolute overall" href="<?php the_permalink(); ?>"></a>
 

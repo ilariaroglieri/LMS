@@ -860,6 +860,13 @@ body {
 body.locked {
   overflow-y: hidden;
 }
+body {
+  opacity: 0;
+  transition: all 0.5s;
+}
+body.loaded {
+  opacity: 1;
+}
 
 p {
   margin: 0;
@@ -1091,13 +1098,36 @@ main section.project .project-thumb.loaded {
     transform: translateX(-100vw);
   }
 }
+#intro-panel {
+  position: fixed;
+  top: calc(var(--header-height) - var(--marquee-height) - 1px);
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - var(--header-height) + var(--marquee-height) + 1px);
+  z-index: 10001;
+  background-color: rgba(147, 255, 90, 0.75);
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.5s;
+}
+#intro-panel #intro-panel-inner {
+  width: calc(66.6664% - var(--double-spacing));
+  margin: 0 auto;
+  background-color: white;
+  padding: 0 var(--double-spacing) var(--double-spacing);
+}
+#intro-panel.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 #project-panel {
   position: fixed;
   top: var(--header-height);
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10001;
+  z-index: 10000;
   overflow-y: auto;
   background-color: white;
   transform: translateY(100%);
@@ -1149,13 +1179,13 @@ main section.project .project-thumb.loaded {
 #journal-panel button.project-panel-close {
   position: absolute;
   right: var(--spacing);
-  top: var(--spacing);
+  top: var(--double-spacing);
   width: var(--spacing);
   height: var(--spacing);
 }
 #journal-panel button.project-panel-close svg {
   stroke: #000;
-  stroke-width: 3px;
+  stroke-width: 6px;
 }
 #journal-panel .journal-panel-body {
   opacity: 0;

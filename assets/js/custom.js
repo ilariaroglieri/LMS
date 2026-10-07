@@ -40,6 +40,15 @@ function randomImg() {
 	})
 }
 
+// home page intro panel
+function hideIntroOnScroll() {
+	document.addEventListener('scroll', (event) => {
+		document.querySelector('#intro-panel').classList.add('hidden');
+	});
+}
+
+hideIntroOnScroll();
+
 // journal accordion
 function journalAccordion() {
 	const jItem = document.querySelectorAll('.journal-item');
@@ -59,16 +68,19 @@ function journalAccordion() {
 
 // dynamic height calculations
 function heightVariables() {
-	const header = document.querySelector('header');
-	// const marquee = document.querySelector('#journal-banner');
+  const header = document.querySelector('header');
 
-	const setMainOffset = () => {
-	  document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
-	  // document.documentElement.style.setProperty('--marquee-height', marquee.offsetHeight + 'px');
-	};
+  const setMainOffset = () => {
+    document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    
+    const marquee = document.querySelector('#journal-banner');
+    if (marquee) {
+      document.documentElement.style.setProperty('--marquee-height', marquee.offsetHeight + 'px');
+    }
+  };
 
-	setMainOffset();
-	window.addEventListener('resize', setMainOffset);
+  setMainOffset();
+  window.addEventListener('resize', setMainOffset);
 }
 
 // dynamic loading
@@ -156,26 +168,31 @@ function initSlider(root) {
   });
 }
 
-marquees();
-randomImg();
-journalAccordion();
-initSlider(document);
 
-heightVariables();
+document.addEventListener('DOMContentLoaded', () => {
+	marquees();
+	randomImg();
+	journalAccordion();
+	initSlider(document);
 
-const journalPanel = dynamicLoad({
-  panelId: 'journal-panel',
-  trigger: '.journal-titles a',
-  bodyLocked: false,
-});
+	heightVariables();
 
-dynamicLoad({
-  panelId: 'project-panel',
-  trigger: '.project .overall',
-  onLoad: (root) => {
-    const slider = initSlider(root);
-    return () => slider?.destroy(true, true);
-  },
-  onOpen: () => journalPanel?.close(),
-  bodyLocked: true,
+	const journalPanel = dynamicLoad({
+	  panelId: 'journal-panel',
+	  trigger: '.journal-titles a',
+	  bodyLocked: false,
+	});
+
+	dynamicLoad({
+	  panelId: 'project-panel',
+	  trigger: '.project .overall',
+	  onLoad: (root) => {
+	    const slider = initSlider(root);
+	    return () => slider?.destroy(true, true);
+	  },
+	  onOpen: () => journalPanel?.close(),
+	  bodyLocked: true,
+	});
+
+  document.querySelector('body').classList.add('loaded');
 });
