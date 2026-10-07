@@ -36,7 +36,9 @@
       <line class="st0" x1="1.3" y1="1.3" x2="44.5" y2="44.5"/>
     </svg>
   </button>
-  <div class="container project-panel-body"></div>
+  <div class="container project-panel-body" data-panel-body></div>
 </div>
+
+<?php get_template_part( 'snippets/journal-panel' ); ?>
 
 <?php get_footer(); ?>

@@ -153,6 +153,9 @@ body {
   color: $primaryColor;
   background-color: $secColor;
   overflow-x: hidden;
+  &.locked {
+    overflow-y: hidden;
+  }
 }
 
 p {
@@ -361,9 +364,9 @@ main {
 #project-panel {
   position: fixed;
   top: var(--header-height);
-  bottom: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   z-index: 10001;
   overflow-y: auto;
   background-color: white;
@@ -388,6 +391,44 @@ main {
     }
   }
   .project-panel-body {
+    opacity: 0;
+    transition: opacity .4s;
+    &.loaded {
+      opacity: 1;
+    }
+  }
+}
+
+#journal-panel {
+  position: fixed;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  width: $col*4;
+  right: 0;
+  z-index: 10002;
+  overflow-y: auto;
+  background-color: white;
+
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform .5s ease-in-out, opacity 0s .5s;
+  &[data-state='open'] {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform .5s ease-in-out, opacity 0s 0s;
+  }
+  button.project-panel-close {
+    position: absolute;
+    right: var(--spacing);
+    top: var(--spacing);
+    width: var(--spacing);
+    height: var(--spacing);
+    svg {
+      stroke: $primaryColor;
+      stroke-width: 3px;
+    }
+  }
+  .journal-panel-body {
     opacity: 0;
     transition: opacity .4s;
     &.loaded {

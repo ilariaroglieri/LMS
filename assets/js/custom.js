@@ -72,44 +72,70 @@ function heightVariables() {
 }
 
 // dynamic loading
-function dynamicLoad() {
-  const panel = document.getElementById('project-panel');
-  if (!panel) return;
-  const body = panel.querySelector('.project-panel-body');
-  const close = panel.querySelector('.project-panel-close');
-	const endpoint = panel.dataset.endpoint;
-  let slider = null;
+function dynamicLoad({ panelId, trigger, onLoad, onOpen, bodyLocked }) {
+  const panel = document.getElementById(panelId);
+  if (!panel) return null;
 
-	async function loadProject(id) {
-	  if (slider) {
-	    slider.destroy(true, true);
-	    slider = null;
-	  }
+  const body = panel.querySelector('[data-panel-body]');
+  const close = panel.querySelector('[data-panel-close]');
+  const endpoint = panel.dataset.endpoint;
+  let cleanup = null;
+  let currentId = null;
 
-	  body.classList.remove('loaded');
-	  body.innerHTML = '';
+  async function load(id) {
+    if (cleanup) {
+      cleanup();
+      cleanup = null;
+    }
 
-	  const response = await fetch(endpoint + id);
-	  const data = await response.json();
+    body.classList.remove('loaded');
+    body.innerHTML = '';
 
-	  body.innerHTML = data.html;
-	  slider = initSlider(body);
-	  body.classList.add('loaded');
-	}
+    const response = await fetch(endpoint + id);
+    const data = await response.json();
 
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('.project .overall');
+    body.innerHTML = data.html;
+    if (onLoad) cleanup = onLoad(body) || null; // init + salva la pulizia per il prossimo load
+    body.classList.add('loaded');
+  }
+
+  function openPanel(id) {
+    if (onOpen) onOpen();
+    currentId = id;
+    panel.dataset.state = 'open';
+    if (bodyLocked) document.body.classList.add('locked');
+    load(id);
+  }
+
+  async function closePanel() {
+    if (panel.dataset.state !== 'open') return;
+
+    panel.dataset.state = 'closed';
+    if (bodyLocked) document.body.classList.remove('locked');
+
+    // aspetta la fine delle transizioni del pannello
+    await Promise.all(panel.getAnimations().map((a) => a.finished.catch(() => {})));
+  }
+
+  document.addEventListener('click', async (e) => {
+    const link = e.target.closest(trigger);
     if (!link) return;
 
     e.preventDefault();
-    panel.dataset.state = 'open';
-    loadProject(link.dataset.id);
+    const id = link.dataset.id;
+
+    if (panel.dataset.state === 'open') {
+      const sameId = id === currentId;
+      await closePanel();
+      if (sameId) return;
+    }
+
+    openPanel(id);
   });
 
-  close.addEventListener('click', () => {
-    panel.dataset.state = 'closed';
-    body.innerHTML = '';
-  });
+  close.addEventListener('click', closePanel);
+
+  return { close: closePanel };
 }
 
 // single page slider
@@ -136,4 +162,20 @@ journalAccordion();
 initSlider(document);
 
 heightVariables();
-dynamicLoad();
+
+const journalPanel = dynamicLoad({
+  panelId: 'journal-panel',
+  trigger: '.journal-titles a',
+  bodyLocked: false,
+});
+
+dynamicLoad({
+  panelId: 'project-panel',
+  trigger: '.project .overall',
+  onLoad: (root) => {
+    const slider = initSlider(root);
+    return () => slider?.destroy(true, true);
+  },
+  onOpen: () => journalPanel?.close(),
+  bodyLocked: true,
+});
