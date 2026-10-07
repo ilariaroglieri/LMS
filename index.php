@@ -7,7 +7,7 @@
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
     <section id="project-<?php the_ID(); ?>" <?php post_class('project'); ?>>
-      <a href="<?php the_permalink(); ?>" class="overall" aria-label="<?php the_title(); ?>"></a>    
+      <a href="<?php the_permalink(); ?>" class="overall" aria-label="<?php the_title(); ?>" data-id="<?php the_ID(); ?>"></a>    
 
       <div class="project-title-wrap">
         <div class="project-title-track">
@@ -29,7 +29,12 @@
     <p>Sorry, no posts found.</p>
 
   <?php endif; ?>
-
 </main>
+
+<div id="project-panel" class="project-panel" data-state="closed" role="dialog" aria-modal="true" aria-labelledby="project-title" tabindex="-1"
+     data-endpoint="<?= esc_url( rest_url( 'lms-theme/project/' ) ); ?>">
+  <button type="button" class="project-panel-close" data-panel-close aria-label="Close"></button>
+  <div class="container" data-panel-body></div>
+</div>
 
 <?php get_footer(); ?>

@@ -57,6 +57,19 @@ function journalAccordion() {
 	}
 }
 
+// dynamic loading
+function dynamicLoad() {	
+	const panel = document.getElementById('project-panel');
+
+	document.addEventListener('click', (e) => {
+	  const link = e.target.closest('.project .overall');
+	  if (!link) return;
+
+	  e.preventDefault();
+	  panel.dataset.state = 'open';
+	});
+}
+
 // single page slider
 const swiper = new Swiper('.swiper-slider', {
   autoplay: false,
@@ -73,3 +86,5 @@ const swiper = new Swiper('.swiper-slider', {
 marquees();
 randomImg();
 journalAccordion();
+
+dynamicLoad();

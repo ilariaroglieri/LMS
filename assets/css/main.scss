@@ -346,10 +346,33 @@ main {
   to   { transform: translateX(-100vw); }
 }
 
+#project-panel {
+  position: fixed;
+  bottom: -100vh;
+  left: 0;
+  width: 100vw;
+  background-color: white;
+  height: 0;
+  opacity: 0;
+  transition: all .75s ease-in-out;
+  &[data-state='open'] {
+    opacity: 1;
+    height: calc(100vh - 12.5vh);
+    bottom: 0;
+    overflow-y: scroll;
+  }
+  button.project-panel-close {
+    position: absolute;
+    right: var(--spacing);
+    top: var(--spacing);
+  }
+}
+
 //---- SINGLE PROJECT
 article {
   #project-img img {
     width: 100%;
+    height: auto;
   }
   #project-txt, #project-info {
     margin-left: $col*1.5;

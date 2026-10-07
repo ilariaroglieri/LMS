@@ -1076,8 +1076,31 @@ main section.project .project-thumb.loaded {
     transform: translateX(-100vw);
   }
 }
+#project-panel {
+  position: fixed;
+  bottom: -100vh;
+  left: 0;
+  width: 100vw;
+  background-color: white;
+  height: 0;
+  opacity: 0;
+  transition: all 0.75s ease-in-out;
+}
+#project-panel[data-state=open] {
+  opacity: 1;
+  height: 87.5vh;
+  bottom: 0;
+  overflow-y: scroll;
+}
+#project-panel button.project-panel-close {
+  position: absolute;
+  right: var(--spacing);
+  top: var(--spacing);
+}
+
 article #project-img img {
   width: 100%;
+  height: auto;
 }
 article #project-txt, article #project-info {
   margin-left: 12.49995%;
