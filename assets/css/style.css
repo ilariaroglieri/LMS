@@ -50,47 +50,69 @@ Version: 1.0
 }
 
 .d-1-twelfth {
-  width: calc(8.3333% * 1);
+  width: calc(8.3333% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-2-twelfth, header div[class*=menu-1] ul li {
-  width: calc(8.3333% * 2);
+  width: calc(16.6666% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-3-twelfth {
-  width: calc(8.3333% * 3);
+  width: calc(24.9999% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-4-twelfth {
-  width: calc(8.3333% * 4);
+  width: calc(33.3332% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-5-twelfth {
-  width: calc(8.3333% * 5);
+  width: calc(41.6665% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-6-twelfth {
-  width: calc(8.3333% * 6);
+  width: calc(49.9998% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-7-twelfth {
-  width: calc(8.3333% * 7);
+  width: calc(58.3331% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-8-twelfth {
-  width: calc(8.3333% * 8);
+  width: calc(66.6664% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-9-twelfth {
-  width: calc(8.3333% * 9);
+  width: calc(74.9997% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-10-twelfth {
-  width: calc(8.3333% * 10);
+  width: calc(83.333% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-11-twelfth {
-  width: calc(8.3333% * 11);
+  width: calc(91.6663% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-one-third {

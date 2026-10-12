@@ -89,7 +89,9 @@ $font-sizes: (
 
 @for $i from 1 through 11 {
   .d-#{$i}-twelfth {
-    width: calc(#{$col} * #{$i});
+    width: calc($col * $i - $double-spacing);
+    margin-right: $spacing;
+    margin-left: $spacing;
   }
 }
 
