@@ -42,15 +42,16 @@ function randomImg() {
 
 // home page intro panel
 function hideIntroOnScroll() {
-  if (sessionStorage.getItem('introHidden')) {
-    document.querySelector('#intro-panel').classList.add('hidden');
-    return;
-  }
+  const panel = document.querySelector('#intro-panel');
 
-  document.addEventListener('scroll', () => {
-    document.querySelector('#intro-panel').classList.add('hidden');
-    sessionStorage.setItem('introHidden', true);
-  }, { once: true });
+  if (!sessionStorage.getItem('introHidden')) {
+    panel.classList.add('visible');
+
+    document.addEventListener('scroll', () => {
+      panel.classList.remove('visible');
+      sessionStorage.setItem('introHidden', true);
+    }, { once: true });
+  }
 }
 
 // journal accordion

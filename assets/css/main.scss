@@ -383,8 +383,8 @@ main {
   height: calc(100vh - var(--header-height) + var(--marquee-height) + 1px);
   z-index: 10001;
   background-color: rgba(147, 255, 90, .75);
-  opacity: 1;
-  pointer-events: all;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity .5s;
   #intro-panel-inner {
     width: calc($col*8 - var(--double-spacing));
@@ -392,9 +392,9 @@ main {
     background-color: white;
     padding: 0 var(--double-spacing) var(--double-spacing);
   }
-  &.hidden {
-    opacity: 0;
-    pointer-events: none;
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
   }
 }
 

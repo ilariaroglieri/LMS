@@ -1143,8 +1143,8 @@ main section.project .project-thumb.loaded {
   height: calc(100vh - var(--header-height) + var(--marquee-height) + 1px);
   z-index: 10001;
   background-color: rgba(147, 255, 90, 0.75);
-  opacity: 1;
-  pointer-events: all;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.5s;
 }
 #intro-panel #intro-panel-inner {
@@ -1153,9 +1153,9 @@ main section.project .project-thumb.loaded {
   background-color: white;
   padding: 0 var(--double-spacing) var(--double-spacing);
 }
-#intro-panel.hidden {
-  opacity: 0;
-  pointer-events: none;
+#intro-panel.visible {
+  opacity: 1;
+  pointer-events: all;
 }
 
 #project-panel {
