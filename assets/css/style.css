@@ -1413,6 +1413,11 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
   display: flex;
 }
 
+#content-about {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 footer {
   display: none;
 }

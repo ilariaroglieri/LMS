@@ -664,6 +664,12 @@ article {
   }
 }
 
+//-- ABOUT
+#content-about {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 
 footer {
   display: none;

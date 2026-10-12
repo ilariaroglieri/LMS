@@ -39,7 +39,9 @@
 				</div>
 			</div>
 
-			<?php if (!is_page(3837)): 
+			<?php 
+			// archive & contact
+			if (!is_page(3837) && !is_page(3839)): 
 				get_template_part( 'snippets/journal-marquee' ); 
 			endif; ?>
 		</header>
