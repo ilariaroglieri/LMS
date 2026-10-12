@@ -179,6 +179,9 @@ function archiveFilters() {
   const projects = document.querySelectorAll('#projects-container .single-project');
   if (!buttons.length || !projects.length) return;
 
+  const FADE = 400; // uguale alla durata nel CSS
+  let timer;
+
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const cat = btn.dataset.cat;
@@ -189,11 +192,37 @@ function archiveFilters() {
         b.setAttribute('aria-pressed', isActive);
       });
 
+      const match = p => cat === 'all' || (p.dataset.projectCat || '').split(' ').includes(cat);
+
+      clearTimeout(timer);
+
+      // 1. fade out di quelli visibili che non corrispondono
       projects.forEach(p => {
-        const cats = (p.dataset.projectCat || '').split(' ');
-        const show = cat === 'all' || cats.includes(cat);
-        p.classList.toggle('hidden', !show);
+        if (!p.classList.contains('hidden')) {
+          p.classList.toggle('is-fading', !match(p));
+        }
       });
+
+      // 2. a fade finito: tolgo dal layout gli uni, rimetto gli altri a opacity 0
+      timer = setTimeout(() => {
+        const entering = [];
+
+        projects.forEach(p => {
+          const show = match(p);
+          if (!show) {
+            p.classList.add('hidden');
+          } else if (p.classList.contains('hidden')) {
+            p.classList.remove('hidden');
+            p.classList.add('is-fading');
+            entering.push(p);
+          }
+        });
+
+        // 3. al frame successivo tolgo is-fading, così parte il fade in
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          entering.forEach(p => p.classList.remove('is-fading'));
+        }));
+      }, FADE);
     });
   });
 }

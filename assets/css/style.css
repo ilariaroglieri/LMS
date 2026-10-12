@@ -1379,10 +1379,11 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
   height: 100%;
   object-fit: cover;
 }
-#content-archive #projects-container .single-project.hidden {
+#content-archive #projects-container .single-project.is-fading {
   opacity: 0;
-  width: 0;
-  margin: 0;
+}
+#content-archive #projects-container .single-project.hidden {
+  display: none;
 }
 
 #journal-container {

@@ -627,10 +627,12 @@ article {
           object-fit: cover;
         }
       }
-      &.hidden {
+      &.is-fading {
         opacity: 0;
-        width: 0;
-        margin: 0;
+      }
+
+      &.hidden {
+        display: none;
       }
     }
   }
