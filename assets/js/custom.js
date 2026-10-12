@@ -42,12 +42,16 @@ function randomImg() {
 
 // home page intro panel
 function hideIntroOnScroll() {
-	document.addEventListener('scroll', (event) => {
-		document.querySelector('#intro-panel').classList.add('hidden');
-	});
-}
+  if (sessionStorage.getItem('introHidden')) {
+    document.querySelector('#intro-panel').classList.add('hidden');
+    return;
+  }
 
-hideIntroOnScroll();
+  document.addEventListener('scroll', () => {
+    document.querySelector('#intro-panel').classList.add('hidden');
+    sessionStorage.setItem('introHidden', true);
+  }, { once: true });
+}
 
 // journal accordion
 function journalAccordion() {
@@ -168,6 +172,31 @@ function initSlider(root) {
   });
 }
 
+// archive filters
+function archiveFilters() {
+  const buttons  = document.querySelectorAll('#cats-container button[data-cat]');
+  const projects = document.querySelectorAll('#projects-container .single-project');
+  if (!buttons.length || !projects.length) return;
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.cat;
+
+      buttons.forEach(b => {
+        const isActive = b === btn;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-pressed', isActive);
+      });
+
+      projects.forEach(p => {
+        const cats = (p.dataset.projectCat || '').split(' ');
+        const show = cat === 'all' || cats.includes(cat);
+        p.classList.toggle('hidden', !show);
+      });
+    });
+  });
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
 	marquees();
@@ -176,6 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	initSlider(document);
 
 	heightVariables();
+
+  if (document.body.classList.contains('home')) {
+    hideIntroOnScroll();
+  } else if (document.body.classList.contains('page-id-3837')) {
+    archiveFilters();
+  }
 
 	const journalPanel = dynamicLoad({
 	  panelId: 'journal-panel',

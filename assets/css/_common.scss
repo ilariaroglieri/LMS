@@ -101,7 +101,9 @@ $d-aliases: (
 
 @each $name, $val in $d-aliases {
   .d-#{$name} {
-    width: calc(#{$col} * #{$val});
+    width: calc($col * $val - $double-spacing);
+    margin-right: $spacing;
+    margin-left: $spacing;
   }
 }
 

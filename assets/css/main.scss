@@ -26,6 +26,10 @@
   display: none;
 }
 
+.d-grid {
+  display: grid;
+}
+
 .d-flex {
   display: flex;
   &.d-row-reverse {
@@ -225,8 +229,13 @@ button {
   width: 100%;
 }
 
-.flex-row, .grid-row {
+.grid-row {
   column-gap: var(--double-spacing);
+}
+
+.flex-row {
+  margin-right: calc(var(--spacing) * -1);
+  margin-left: calc(var(--spacing) * -1);
 }
 
 header {
@@ -527,9 +536,36 @@ article {
   height: 100vh;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  #cats-container {
+    grid-template-columns: repeat(4, 1fr);
+    .button-container {
+      padding: var(--spacing) 0;
+      margin-bottom: var(--double-spacing);
+      border-top: 2px solid $primaryColor;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      pointer-events: all;
+      transform: translateX(0);
+      transition: all .2s;
+      &:before {
+        content: url('../img/LMS_arrow_right.svg');
+        display: flex;
+        height: .9vw;
+        margin-right: var(--spacing);
+      }
+      &:hover {
+        transform: translateX(var(--half-spacing));
+      }
+      &.active {
+        pointer-events: none;
+        cursor: default;
+      }
+    }
+  }
   #projects-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     height: 100%;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -537,6 +573,9 @@ article {
       display: none;
     }
     .single-project {
+      opacity: 1;
+      overflow: hidden;
+      transition: opacity .5s;
       .project-category {
         display: flex;
         align-items: center;
@@ -557,6 +596,11 @@ article {
           height: 100%;
           object-fit: cover;
         }
+      }
+      &.hidden {
+        opacity: 0;
+        width: 0;
+        margin: 0;
       }
     }
   }

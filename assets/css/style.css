@@ -94,15 +94,21 @@ Version: 1.0
 }
 
 .d-one-third {
-  width: calc(8.3333% * 4);
+  width: calc(33.3332% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-half {
-  width: calc(8.3333% * 6);
+  width: calc(49.9998% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-two-thirds {
-  width: calc(8.3333% * 8);
+  width: calc(66.6664% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .d-whole {
@@ -737,6 +743,10 @@ Version: 1.0
   display: none;
 }
 
+.d-grid {
+  display: grid;
+}
+
 .d-flex {
   display: flex;
 }
@@ -930,8 +940,13 @@ button {
   width: 100%;
 }
 
-.flex-row, .grid-row {
+.grid-row {
   column-gap: var(--double-spacing);
+}
+
+.flex-row {
+  margin-right: calc(var(--spacing) * -1);
+  margin-left: calc(var(--spacing) * -1);
 }
 
 header {
@@ -1250,15 +1265,47 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+#content-archive #cats-container {
+  grid-template-columns: repeat(4, 1fr);
+}
+#content-archive #cats-container .button-container {
+  padding: var(--spacing) 0;
+  margin-bottom: var(--double-spacing);
+  border-top: 2px solid #000;
+}
+#content-archive #cats-container button {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  pointer-events: all;
+  transform: translateX(0);
+  transition: all 0.2s;
+}
+#content-archive #cats-container button:before {
+  content: url("../img/LMS_arrow_right.svg");
+  display: flex;
+  height: 0.9vw;
+  margin-right: var(--spacing);
+}
+#content-archive #cats-container button:hover {
+  transform: translateX(var(--half-spacing));
+}
+#content-archive #cats-container button.active {
+  pointer-events: none;
+  cursor: default;
+}
 #content-archive #projects-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   height: 100%;
   overflow-y: scroll;
   scrollbar-width: none;
 }
 #content-archive #projects-container::-webkit-scrollbar {
   display: none;
+}
+#content-archive #projects-container .single-project {
+  opacity: 1;
+  overflow: hidden;
+  transition: opacity 0.5s;
 }
 #content-archive #projects-container .single-project .project-category {
   display: flex;
@@ -1280,6 +1327,11 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 #content-archive #projects-container .single-project figure.landscape img {
   height: 100%;
   object-fit: cover;
+}
+#content-archive #projects-container .single-project.hidden {
+  opacity: 0;
+  width: 0;
+  margin: 0;
 }
 
 #journal-container {
