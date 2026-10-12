@@ -18,7 +18,7 @@ Version: 1.0
 }
 
 .s-large {
-  font-size: clamp(36px, 3.06vw, 44px);
+  font-size: clamp(36px, 3vw, 40px);
 }
 
 .s-medium {
@@ -42,7 +42,7 @@ Version: 1.0
   --half-spacing: 6px;
   --double-spacing: 24px;
   --s-huge: clamp(56px, 7.29vw, 105px);
-  --s-large: clamp(36px, 3.06vw, 44px);
+  --s-large: clamp(36px, 3vw, 40px);
   --s-medium: clamp(24px, 1.94vw, 28px);
   --s-regular-2: clamp(20px, 1.67vw, 24px);
   --s-regular: clamp(16px, 1.39vw, 20px);
@@ -1003,7 +1003,7 @@ header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-current-language {
 header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-first-item {
   margin-left: auto;
 }
-header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-first-item:after {
+header div[class*=menu-1] ul li.wpml-ls-item + .wpml-ls-item:before {
   content: "/";
   display: flex;
 }
@@ -1170,6 +1170,7 @@ main section.project .project-thumb.loaded {
 #intro-panel #intro-panel-inner {
   width: calc(66.6664% - var(--double-spacing));
   margin: 0 auto;
+  margin-top: -1px;
   background-color: white;
   padding: 0 var(--double-spacing) var(--double-spacing);
 }
@@ -1307,6 +1308,14 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+#content-archive #archive-container {
+  height: calc(100vh - var(--header-height));
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+#content-archive #archive-container::-webkit-scrollbar {
+  display: none;
+}
 #content-archive #cats-container {
   grid-template-columns: repeat(4, 1fr);
 }
@@ -1347,7 +1356,7 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 #content-archive #projects-container .single-project {
   opacity: 1;
   overflow: hidden;
-  transition: opacity 0.5s;
+  transition: opacity 1s;
 }
 #content-archive #projects-container .single-project .project-category {
   display: flex;
@@ -1377,7 +1386,7 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 }
 
 #journal-container {
-  height: 100%;
+  height: calc(100vh - var(--header-height));
   padding-left: 4.16665vw;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -1416,6 +1425,9 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 #content-about {
   display: grid;
   grid-template-columns: 2fr 1fr;
+}
+#content-about #about-container .info-value {
+  padding-right: 8.3333%;
 }
 
 footer {

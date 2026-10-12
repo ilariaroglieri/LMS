@@ -270,7 +270,9 @@ header {
         }
         &.wpml-ls-first-item {
           margin-left: auto;
-          &:after {
+        }
+        & + .wpml-ls-item {
+          &:before {
             content: '/';
             display: flex;
           }
@@ -408,6 +410,7 @@ main {
   #intro-panel-inner {
     width: calc($col*8 - var(--double-spacing));
     margin: 0 auto;
+    margin-top: -1px;
     background-color: white;
     padding: 0 var(--double-spacing) var(--double-spacing);
   }
@@ -555,6 +558,14 @@ article {
   height: 100vh;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  #archive-container {
+    height: calc(100vh - var(--header-height));
+    overflow-y: scroll;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
   #cats-container {
     grid-template-columns: repeat(4, 1fr);
     .button-container {
@@ -594,7 +605,7 @@ article {
     .single-project {
       opacity: 1;
       overflow: hidden;
-      transition: opacity .5s;
+      transition: opacity 1s;
       .project-category {
         display: flex;
         align-items: center;
@@ -628,7 +639,7 @@ article {
 
 // --- JOURNAL LIST
 #journal-container {
-  height: 100%;
+  height: calc(100vh - var(--header-height));
   padding-left: 4.16665vw; //half column
   overflow-y: scroll;
   scrollbar-width: none;
@@ -668,6 +679,11 @@ article {
 #content-about {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  #about-container {
+    .info-value {
+      padding-right: $col;
+    }
+  }
 }
 
 
