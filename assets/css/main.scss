@@ -257,8 +257,27 @@ header {
     display: contents;
     ul {
       display: contents;
-      li {
+      li:not(.wpml-ls-item) {
         @extend .d-2-twelfth;
+      }
+      li.wpml-ls-item {
+        text-transform: uppercase;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        &.wpml-ls-current-language {
+          pointer-events: none;
+        }
+        &.wpml-ls-first-item {
+          margin-left: auto;
+          &:after {
+            content: '/';
+            display: flex;
+          }
+        }
+        &.wpml-ls-last-item {
+          margin-right: var(--spacing);
+        }
       }
     }
   }

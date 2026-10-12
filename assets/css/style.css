@@ -55,7 +55,7 @@ Version: 1.0
   margin-left: 12px;
 }
 
-.d-2-twelfth, header div[class*=menu-1] ul li {
+.d-2-twelfth, header div[class*=menu-1] ul li:not(.wpml-ls-item) {
   width: calc(16.6666% - 24px);
   margin-right: 12px;
   margin-left: 12px;
@@ -991,6 +991,26 @@ header div[class*=menu-1] {
 header div[class*=menu-1] ul {
   display: contents;
 }
+header div[class*=menu-1] ul li.wpml-ls-item {
+  text-transform: uppercase;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-current-language {
+  pointer-events: none;
+}
+header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-first-item {
+  margin-left: auto;
+}
+header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-first-item:after {
+  content: "/";
+  display: flex;
+}
+header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-last-item {
+  margin-right: var(--spacing);
+}
+
 .project:nth-child(1) .project-title-track {
   --random-delay: 0s;
 }
