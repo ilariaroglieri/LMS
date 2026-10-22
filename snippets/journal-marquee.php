@@ -15,7 +15,9 @@ if ( $journalEntries->have_posts() ): ?>
         <?php while ( $journalEntries->have_posts() ): $journalEntries->the_post();
           $date = get_the_date('m/Y');
           $title = get_the_title(); ?>
-          <span class="s-medium"><a href="<?php the_permalink(); ?>" data-id="<?php the_ID(); ?>"><?= $date . ' > ' . $title; ?></a></span>
+          <span class="journal-title s-medium">
+            <a href="<?php the_permalink(); ?>" data-id="<?php the_ID(); ?>"><span class="journal-arrow" aria-hidden="true"></span><?= $date ?> <?= $title ?></a>
+          </span>
         <?php endwhile ?>
       </p>
     </div>

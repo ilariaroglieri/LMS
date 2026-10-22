@@ -1067,8 +1067,18 @@ header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-last-item {
 .journal-banner .journal-track:hover {
   animation-play-state: paused;
 }
-.journal-banner .journal-track .journal-titles span {
+.journal-banner .journal-track .journal-titles .journal-title {
   margin-right: var(--spacing);
+}
+.journal-banner .journal-track .journal-titles .journal-title .journal-arrow {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin: 0 8px;
+  vertical-align: baseline;
+  background-color: currentColor;
+  mask: url("../img/LMS_arrow_right.svg") no-repeat center/contain;
+  -webkit-mask: url("../img/LMS_arrow_right.svg") no-repeat center/contain;
 }
 
 main {
@@ -1102,7 +1112,7 @@ main section.project .project-title-wrap .project-title-track.is-long {
   animation: marquee-long 20s linear infinite;
 }
 main section.project .project-title-wrap .project-title-track.is-long .project-title {
-  margin-right: var(--double-spacing);
+  margin-right: calc(var(--double-spacing) * 6);
 }
 main section.project .project-title-wrap .project-title-track.is-short {
   position: relative;

@@ -308,8 +308,18 @@ $delays: (0s, -12s, -3s, -10.5s, -6s, -7.5s, -9s, -4.5s, -1.5s, -13.5s);
       animation-play-state: paused;
     }
     .journal-titles {
-      span {
+      .journal-title {
         margin-right: var(--spacing);
+        .journal-arrow {
+          display: inline-block;
+          width: 0.7em;
+          height: 0.7em;
+          margin: 0 8px;
+          vertical-align: baseline;
+          background-color: currentColor;
+          mask: url('../img/LMS_arrow_right.svg') no-repeat center / contain;
+          -webkit-mask: url('../img/LMS_arrow_right.svg') no-repeat center / contain;
+        }
       }
     }
   }
@@ -343,7 +353,7 @@ main {
           width: max-content;
           animation: marquee-long 20s linear infinite;
           .project-title {
-            margin-right: var(--double-spacing);
+            margin-right: calc(var(--double-spacing)*6);
           }
         }
         &.is-short {
