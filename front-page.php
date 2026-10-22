@@ -21,11 +21,6 @@
         </div>
       </div>
 
-      <?php $categories = get_the_category(); 
-      if ($categories): ?>
-        <span class="project-category uppercase s-small" data-cat="<?= $categories[0]->slug ?>"><?= esc_html( $categories[0]->name ); ?></span>
-      <?php endif; ?>
-
       <?php if ( has_post_thumbnail() ) : the_post_thumbnail('medium', array('class' => 'project-thumb')); endif; ?>
     </section>
   
