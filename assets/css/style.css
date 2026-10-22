@@ -17,6 +17,10 @@ Version: 1.0
   font-size: clamp(56px, 7.29vw, 105px);
 }
 
+.s-huge-2 {
+  font-size: clamp(56px, 4.5vw, 65px);
+}
+
 .s-large {
   font-size: clamp(36px, 3vw, 40px);
 }
@@ -42,6 +46,7 @@ Version: 1.0
   --half-spacing: 6px;
   --double-spacing: 24px;
   --s-huge: clamp(56px, 7.29vw, 105px);
+  --s-huge-2: clamp(56px, 4.5vw, 65px);
   --s-large: clamp(36px, 3vw, 40px);
   --s-medium: clamp(24px, 1.94vw, 28px);
   --s-regular-2: clamp(20px, 1.67vw, 24px);
@@ -1267,9 +1272,6 @@ article #project-img img {
   width: 100%;
   height: auto;
 }
-article #project-txt, article #project-info {
-  margin-left: 12.49995%;
-}
 article #project-txt .project-info-label, article #project-info .project-info-label {
   padding-right: 8.3333%;
 }
@@ -1330,8 +1332,8 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
   grid-template-columns: repeat(4, 1fr);
 }
 #content-archive #cats-container .button-container {
-  padding: var(--spacing) 0;
-  margin-bottom: var(--double-spacing);
+  padding: var(--half-spacing) 0;
+  margin-bottom: calc(var(--spacing) * 3);
   border-top: 2px solid #000;
 }
 #content-archive #cats-container button {

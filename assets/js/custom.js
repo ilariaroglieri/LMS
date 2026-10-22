@@ -186,6 +186,8 @@ function archiveFilters() {
     btn.addEventListener('click', () => {
       const cat = btn.dataset.cat;
 
+      console.log('click');
+
       buttons.forEach(b => {
         const isActive = b === btn;
         b.classList.toggle('active', isActive);
@@ -238,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.body.classList.contains('home')) {
     hideIntroOnScroll();
-  } else if (document.body.classList.contains('page-id-3837')) {
+  } else if (document.body.classList.contains('page-id-3837') || document.body.classList.contains('page-id-3862')) {
     archiveFilters();
   }
 

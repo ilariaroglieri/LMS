@@ -513,7 +513,7 @@ article {
     height: auto;
   }
   #project-txt, #project-info {
-    margin-left: $col*1.5;
+    // margin-left: $col*1.5;
     .project-info-label {
       padding-right: $col;
     }
@@ -579,8 +579,8 @@ article {
   #cats-container {
     grid-template-columns: repeat(4, 1fr);
     .button-container {
-      padding: var(--spacing) 0;
-      margin-bottom: var(--double-spacing);
+      padding: var(--half-spacing) 0;
+      margin-bottom: calc(var(--spacing)*3);
       border-top: 2px solid $primaryColor;
     }
     button {

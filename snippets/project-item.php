@@ -4,7 +4,7 @@
     if ($categories): ?>
       <h2 id="project-cat" class="project-category uppercase s-medium t-center spacing-b-4" data-reveal="parent"><?= esc_html( $categories[0]->name ); ?></h2>
     <?php endif; ?>
-    <h1 id="project-title" class="s-huge uppercase t-center spacing-b-6" data-reveal="parent"><?php the_title() ?></h1>
+    <h1 id="project-title" class="s-huge-2 uppercase t-center spacing-b-6" data-reveal="parent"><?php the_title() ?></h1>
 
     <?php if ( has_post_thumbnail() ) : ?> 
       <figure id="project-img" class="d-flex v-center spacing-b-6" data-reveal="parent">
@@ -12,7 +12,7 @@
       </figure>
     <?php endif; ?>
 
-    <div id="project-txt" class="wysiwyg s-regular-2 spacing-b-6">
+    <div id="project-txt" class="wysiwyg s-regular spacing-b-6">
       <?php the_content(); ?>
     </div>
 
