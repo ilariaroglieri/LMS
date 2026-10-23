@@ -29,14 +29,21 @@
 		<header> 
 			<div id="header-row">
 				<div class="d-flex flex-row">
-					<div id="logo" class="d-1-twelfth t-3-twelfth">
+					<div id="logo" class="d-1-twelfth t-3-twelfth m-2-twelfth">
 						<a href="<?= home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 							<img src="<?= get_stylesheet_directory_uri() ?>/assets/img/LMS_logo.svg" alt="Luca Molinari Studio" />
 						</a>
 					</div>
 
 					<div class="d-1-twelfth t-hidden"></div>
+
 					<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
+
+					<button class="menu-toggle d-none">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
 				</div>
 			</div>
 

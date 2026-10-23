@@ -42,7 +42,7 @@
                 $orientation = $img_meta['width'] > $img_meta['height'] ? 'landscape' : 'portrait';
               }
             ?>
-              <figure class="project-img spacing-b-4 <?= $orientation ?>" data-reveal="parent">
+              <figure class="project-img spacing-b-4 spacing-t-b-2 <?= $orientation ?>" data-reveal="parent">
                 <?php the_post_thumbnail('medium'); ?>
               </figure>
             <?php endif; ?>

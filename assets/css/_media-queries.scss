@@ -54,6 +54,12 @@
 }
 
 @media screen and (max-width: $mobile) {
+  :root {
+    --spacing: 8px;
+    --half-spacing: 4px;
+    --double-spacing: 16px;
+  }
+
   .m-hidden {
     display: none; 
   }
@@ -72,39 +78,78 @@
   }
 
   .m-whole {
-    width: calc(100% - $double-spacing);
-    margin-left: $spacing;
-    margin-right: $spacing;
+    width: calc(100% - var(--double-spacing));
+    margin-left: var(--spacing);
+    margin-right: var(--spacing);
   }
 
   .m-half {
-    width: calc(50% - $double-spacing);
-    margin-left: $spacing;
-    margin-right: $spacing;
+    width: calc(50% - var(--double-spacing));
+    margin-left: var(--spacing);
+    margin-right: var(--spacing);
   }
 
   main {
-    border-width: calc(#{$half-spacing} + #{$half-spacing}/2);
+    border-width: calc(var(--half-spacing) * 1.5);
   }
 
-  .container {
-    width: calc(100% - #{$spacing} * 3);
-    margin-left: calc(#{$half-spacing} * 3);
-    margin-right: calc(#{$half-spacing} * 3);
-  }
-
-  .flex-row{
-    margin-right: calc(#{$spacing} * -1);
-    margin-left: calc(#{$spacing} * -1);
+  .flex-row {
+    margin-right: calc(var(--spacing) * -1);
+    margin-left: calc(var(--spacing) * -1);
     position: relative;
   }
 
-  .two-col-layout {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "title"
-      "images"
-      "text";
+  header {
+    #logo img {
+      width: 100%;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+    div[class*="menu-1"] {
+      display: flex;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 66.6666%;
+      height: 50vh;
+      background-color: white;
+      z-index: 10;
+      padding: var(--spacing);
+      padding-top: var(--double-spacing);
+      transition: right .5s;
+      &.open {
+        right: 0;
+      }
+      ul {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        li:not(.wpml-ls-item) {
+          @extend .m-whole;
+        }
+        li.wpml-ls-item {
+          justify-content: flex-start;
+          margin-top: var(--double-spacing);
+          width: unset;
+          &.wpml-ls-current-language {
+            pointer-events: none;
+          }
+          &.wpml-ls-first-item {
+            margin-left: var(--spacing);
+          }
+          & + .wpml-ls-item {
+            &:before {
+              content: '/';
+              display: flex;
+            }
+          }
+          &.wpml-ls-last-item {
+          }
+        }
+      }
+    }
   }
 }
 

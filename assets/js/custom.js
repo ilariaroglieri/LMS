@@ -274,4 +274,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
   document.querySelector('body').classList.add('loaded');
+
+  // mobile-menu {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('div[class*="menu-1"]');
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
 });

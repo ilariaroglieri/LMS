@@ -22,7 +22,6 @@ $accentColorCons: #ccc;
 // =============================
 // SPACING
 // =============================
-
 $spacing: 12px;
 $half-spacing: calc($spacing / 2);
 $double-spacing: calc($spacing * 2);
@@ -53,12 +52,12 @@ $col: 8.3333%; // 12 columns
 
 
 $font-sizes: (
-  'huge': clamp(56px, 7.29vw, 105px),
-  'huge-2': clamp(56px, 4.5vw, 65px),
+  'huge': clamp(60px, 7.5vw, 105px),
+  'huge-2': clamp(60px, 4.5vw, 65px),
   'large': clamp(36px, 3vw, 40px),
   'medium':  clamp(24px, 1.94vw, 28px),
   'regular-2': clamp(20px, 1.67vw, 24px),
-  'regular': clamp(16px, 1.39vw, 20px),
+  'regular': clamp(20px, 1.67vw, 20px),
   'small': clamp(12px, 1.11vw, 16px),
 );
 
@@ -90,9 +89,9 @@ $font-sizes: (
 
 @for $i from 1 through 11 {
   .d-#{$i}-twelfth {
-    width: calc($col * $i - $double-spacing);
-    margin-right: $spacing;
-    margin-left: $spacing;
+    width: calc($col * $i - var(--double-spacing));
+    margin-right: var(--spacing);
+    margin-left: var(--spacing);
   }
 }
 
@@ -104,9 +103,9 @@ $d-aliases: (
 
 @each $name, $val in $d-aliases {
   .d-#{$name} {
-    width: calc($col * $val - $double-spacing);
-    margin-right: $spacing;
-    margin-left: $spacing;
+    width: calc($col * $val - var(--double-spacing));
+    margin-right: var(--spacing);
+    margin-left: var(--spacing);
   }
 }
 
@@ -168,9 +167,9 @@ $spacing-scale: (
 
   @for $i from 1 through 11 {
     .t-#{$i}-twelfth {
-      width: calc($col * $i - $double-spacing);
-      margin-right: $spacing;
-      margin-left: $spacing;
+      width: calc($col * $i - var(--double-spacing));
+      margin-right: var(--spacing);
+      margin-left: var(--spacing);
     }
   }
 }
@@ -188,9 +187,9 @@ $spacing-scale: (
 
   @for $i from 1 through 11 {
     .m-#{$i}-twelfth {
-      width: calc($col * $i - $double-spacing);
-      margin-right: $spacing;
-      margin-left: $spacing;
+      width: calc($col * $i - var(--double-spacing));
+      margin-right: var(--spacing);
+      margin-left: var(--spacing);
     }
   }
 }
