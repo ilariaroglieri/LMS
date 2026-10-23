@@ -29,20 +29,20 @@
 		<header> 
 			<div id="header-row">
 				<div class="d-flex flex-row">
-					<div id="logo" class="d-1-twelfth">
+					<div id="logo" class="d-1-twelfth t-3-twelfth">
 						<a href="<?= home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 							<img src="<?= get_stylesheet_directory_uri() ?>/assets/img/LMS_logo.svg" alt="Luca Molinari Studio" />
 						</a>
 					</div>
 
-					<div class="d-1-twelfth"></div>
+					<div class="d-1-twelfth t-hidden"></div>
 					<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 				</div>
 			</div>
 
 			<?php 
-			// archive & contact
-			if (!is_page(3837) || !is_page(3839)): 
+			// archive & about
+			if (!is_page([3837, 3862, 3839, 3880])): 
 				get_template_part( 'snippets/journal-marquee' ); 
 			endif; ?>
 		</header>

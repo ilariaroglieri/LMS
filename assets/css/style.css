@@ -563,6 +563,61 @@ Version: 1.0
   .spacing-t-p-t-12 {
     padding-top: calc(6px * 12);
   }
+  .t-1-twelfth {
+    width: calc(8.3333% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-2-twelfth {
+    width: calc(16.6666% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-3-twelfth {
+    width: calc(24.9999% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-4-twelfth {
+    width: calc(33.3332% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-5-twelfth {
+    width: calc(41.6665% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-6-twelfth {
+    width: calc(49.9998% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-7-twelfth {
+    width: calc(58.3331% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-8-twelfth {
+    width: calc(66.6664% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-9-twelfth {
+    width: calc(74.9997% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-10-twelfth {
+    width: calc(83.333% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .t-11-twelfth {
+    width: calc(91.6663% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
 }
 @media screen and (max-width: 640px) {
   .spacing-m-b-0 {
@@ -744,6 +799,61 @@ Version: 1.0
   }
   .spacing-m-p-t-12 {
     padding-top: calc(6px * 12);
+  }
+  .m-1-twelfth {
+    width: calc(8.3333% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-2-twelfth {
+    width: calc(16.6666% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-3-twelfth {
+    width: calc(24.9999% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-4-twelfth {
+    width: calc(33.3332% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-5-twelfth {
+    width: calc(41.6665% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-6-twelfth {
+    width: calc(49.9998% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-7-twelfth {
+    width: calc(58.3331% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-8-twelfth {
+    width: calc(66.6664% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-9-twelfth {
+    width: calc(74.9997% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-10-twelfth {
+    width: calc(83.333% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  .m-11-twelfth {
+    width: calc(91.6663% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
   }
 }
 :root {
@@ -1338,10 +1448,10 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 }
 #content-archive #cats-container {
   grid-template-columns: repeat(4, 1fr);
+  margin-bottom: calc(var(--spacing) * 3);
 }
 #content-archive #cats-container .button-container {
   padding: var(--half-spacing) 0;
-  margin-bottom: calc(var(--spacing) * 3);
   border-top: 2px solid #000;
 }
 #content-archive #cats-container button {
@@ -1469,14 +1579,26 @@ footer {
     flex-flow: column-reverse;
   }
   .t-whole {
-    width: calc(100% - 12px);
-    margin-left: 6px;
-    margin-right: 6px;
+    width: calc(100% - 24px);
+    margin-left: 12px;
+    margin-right: 12px;
   }
   .t-half {
-    width: calc(50% - 12px);
-    margin-left: 6px;
-    margin-right: 6px;
+    width: calc(50% - 24px);
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  header #logo img {
+    width: 33.3333%;
+  }
+  #content-archive #cats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #journal-container {
+    padding-left: 0;
+  }
+  #content-about {
+    grid-template-columns: 1fr;
   }
 }
 @media screen and (max-width: 640px) {
@@ -1494,15 +1616,13 @@ footer {
   }
   .m-whole {
     width: calc(100% - 24px);
-    margin-right: 12px;
     margin-left: 12px;
-    margin-bottom: calc(12px * 3);
+    margin-right: 12px;
   }
   .m-half {
     width: calc(50% - 24px);
-    margin-right: 12px;
     margin-left: 12px;
-    margin-bottom: calc(12px * 3);
+    margin-right: 12px;
   }
   main {
     border-width: calc(6px + 6px / 2);

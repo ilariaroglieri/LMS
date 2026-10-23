@@ -165,6 +165,14 @@ $spacing-scale: (
   @include generate-spacing("spacing-t-t",   margin-top);
   @include generate-spacing("spacing-t-p-b", padding-bottom);
   @include generate-spacing("spacing-t-p-t", padding-top);
+
+  @for $i from 1 through 11 {
+    .t-#{$i}-twelfth {
+      width: calc($col * $i - $double-spacing);
+      margin-right: $spacing;
+      margin-left: $spacing;
+    }
+  }
 }
 
 
@@ -177,4 +185,12 @@ $spacing-scale: (
   @include generate-spacing("spacing-m-t",   margin-top);
   @include generate-spacing("spacing-m-p-b", padding-bottom);
   @include generate-spacing("spacing-m-p-t", padding-top);
+
+  @for $i from 1 through 11 {
+    .m-#{$i}-twelfth {
+      width: calc($col * $i - $double-spacing);
+      margin-right: $spacing;
+      margin-left: $spacing;
+    }
+  }
 }

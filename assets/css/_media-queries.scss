@@ -23,16 +23,33 @@
   }
 
   .t-whole {
-    width: calc(100% - #{$spacing});
-    margin-left: #{$half-spacing};
-    margin-right: #{$half-spacing};
+    width: calc(100% - $double-spacing);
+    margin-left: $spacing;
+    margin-right: $spacing;
   }
 
-
   .t-half {
-    width: calc(50% - #{$spacing});
-    margin-left: #{$half-spacing};
-    margin-right: #{$half-spacing};
+    width: calc(50% - $double-spacing);
+    margin-left: $spacing;
+    margin-right: $spacing;
+  }
+
+  header #logo img {
+    width: 33.3333%;
+  }
+
+  #content-archive {
+    #cats-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  #journal-container {
+    padding-left: 0;
+  }
+
+  #content-about {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -55,17 +72,15 @@
   }
 
   .m-whole {
-    width: calc(100% - #{$double-spacing});
-    margin-right:$spacing;
-    margin-left:$spacing;
-    margin-bottom: calc(#{$spacing}*3);
+    width: calc(100% - $double-spacing);
+    margin-left: $spacing;
+    margin-right: $spacing;
   }
 
   .m-half {
-    width: calc(50% - #{$double-spacing});
-    margin-right:$spacing;
-    margin-left:$spacing;
-    margin-bottom: calc(#{$spacing}*3);
+    width: calc(50% - $double-spacing);
+    margin-left: $spacing;
+    margin-right: $spacing;
   }
 
   main {

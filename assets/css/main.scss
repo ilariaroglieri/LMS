@@ -584,9 +584,9 @@ article {
   }
   #cats-container {
     grid-template-columns: repeat(4, 1fr);
+    margin-bottom: calc(var(--spacing)*3);
     .button-container {
       padding: var(--half-spacing) 0;
-      margin-bottom: calc(var(--spacing)*3);
       border-top: 2px solid $primaryColor;
     }
     button {
