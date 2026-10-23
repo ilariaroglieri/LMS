@@ -53,11 +53,11 @@ $col: 8.3333%; // 12 columns
 
 $font-sizes: (
   'huge': clamp(60px, 7.5vw, 105px),
-  'huge-2': clamp(60px, 4.5vw, 65px),
+  'huge-2': clamp(36px, 4.5vw, 65px),
   'large': clamp(36px, 3vw, 40px),
-  'medium':  clamp(24px, 1.94vw, 28px),
-  'regular-2': clamp(20px, 1.67vw, 24px),
-  'regular': clamp(20px, 1.67vw, 20px),
+  'medium':  clamp(20px, 1.7vw, 28px),
+  'regular-2': clamp(16px, 1.4vw, 24px),
+  'regular': clamp(16px, 1.4vw, 20px),
   'small': clamp(12px, 1.11vw, 16px),
 );
 

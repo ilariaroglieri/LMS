@@ -503,10 +503,11 @@ main {
   }
   button.project-panel-close {
     position: absolute;
-    right: var(--spacing);
-    top: var(--spacing);
+    right: var(--double-spacing);
+    top: var(--double-spacing);
     width: calc(var(--spacing)*3);
     height: calc(var(--spacing)*3);
+    z-index: 10;
     svg {
       stroke: $primaryColor;
       stroke-width: 3px;
@@ -586,10 +587,13 @@ article {
       position: relative;
       .swiper-slide {
         background-color: white;
+        &.portrait img {
+          object-fit: contain;
+        }
         img {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          object-fit: cover;
         }
       }
       .swiper-navi {

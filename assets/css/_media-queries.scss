@@ -68,6 +68,14 @@
     display: inline-block;
   }
 
+  .s-m-small {
+    font-size: 16px;
+  }
+
+  .s-m-xsmall {
+    font-size: 14px;
+  }
+
   .d-flex {
     &.m-column {
       flex-flow: column;
@@ -150,6 +158,41 @@
         }
       }
     }
+  }
+
+  #project-panel {
+    button.project-panel-close {
+      width: var(--double-spacing);
+      height: var(--double-spacing);
+      svg {
+        stroke-width: 6px;
+      }
+    }
+  } 
+
+  article {
+    #project-carousel {
+      .swiper-slider {
+        .swiper-navi {
+          .swiper-button-prev {
+            left: var(--spacing);
+            &:after {
+              width: calc(var(--double-spacing) * 1.5);
+            }
+          }
+          .swiper-button-next {
+            right: var(--spacing);
+            &:after {
+              width: calc(var(--double-spacing) * 1.5);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .journal-banner {
+    display: none;
   }
 }
 

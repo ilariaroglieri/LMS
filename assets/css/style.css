@@ -18,7 +18,7 @@ Version: 1.0
 }
 
 .s-huge-2 {
-  font-size: clamp(60px, 4.5vw, 65px);
+  font-size: clamp(36px, 4.5vw, 65px);
 }
 
 .s-large {
@@ -26,15 +26,15 @@ Version: 1.0
 }
 
 .s-medium {
-  font-size: clamp(24px, 1.94vw, 28px);
+  font-size: clamp(20px, 1.7vw, 28px);
 }
 
 .s-regular-2, .wysiwyg.s-regular-2 {
-  font-size: clamp(20px, 1.67vw, 24px);
+  font-size: clamp(16px, 1.4vw, 24px);
 }
 
 .s-regular, body {
-  font-size: clamp(20px, 1.67vw, 20px);
+  font-size: clamp(16px, 1.4vw, 20px);
 }
 
 .s-small {
@@ -46,11 +46,11 @@ Version: 1.0
   --half-spacing: 6px;
   --double-spacing: 24px;
   --s-huge: clamp(60px, 7.5vw, 105px);
-  --s-huge-2: clamp(60px, 4.5vw, 65px);
+  --s-huge-2: clamp(36px, 4.5vw, 65px);
   --s-large: clamp(36px, 3vw, 40px);
-  --s-medium: clamp(24px, 1.94vw, 28px);
-  --s-regular-2: clamp(20px, 1.67vw, 24px);
-  --s-regular: clamp(20px, 1.67vw, 20px);
+  --s-medium: clamp(20px, 1.7vw, 28px);
+  --s-regular-2: clamp(16px, 1.4vw, 24px);
+  --s-regular: clamp(16px, 1.4vw, 20px);
   --s-small: clamp(12px, 1.11vw, 16px);
 }
 
@@ -1373,10 +1373,11 @@ main section.project .project-thumb.loaded {
 }
 #project-panel button.project-panel-close {
   position: absolute;
-  right: var(--spacing);
-  top: var(--spacing);
+  right: var(--double-spacing);
+  top: var(--double-spacing);
   width: calc(var(--spacing) * 3);
   height: calc(var(--spacing) * 3);
+  z-index: 10;
 }
 #project-panel button.project-panel-close svg {
   stroke: #000;
@@ -1451,10 +1452,13 @@ article #project-carousel .swiper-slider {
 article #project-carousel .swiper-slider .swiper-slide {
   background-color: white;
 }
+article #project-carousel .swiper-slider .swiper-slide.portrait img {
+  object-fit: contain;
+}
 article #project-carousel .swiper-slider .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 article #project-carousel .swiper-slider .swiper-navi .swiper-button-prev {
   left: var(--double-spacing);
@@ -1663,6 +1667,12 @@ footer {
   .m-visible {
     display: inline-block;
   }
+  .s-m-small {
+    font-size: 16px;
+  }
+  .s-m-xsmall {
+    font-size: 14px;
+  }
   .d-flex.m-column {
     flex-flow: column;
   }
@@ -1729,6 +1739,28 @@ footer {
   header div[class*=menu-1] ul li.wpml-ls-item + .wpml-ls-item:before {
     content: "/";
     display: flex;
+  }
+  #project-panel button.project-panel-close {
+    width: var(--double-spacing);
+    height: var(--double-spacing);
+  }
+  #project-panel button.project-panel-close svg {
+    stroke-width: 6px;
+  }
+  article #project-carousel .swiper-slider .swiper-navi .swiper-button-prev {
+    left: var(--spacing);
+  }
+  article #project-carousel .swiper-slider .swiper-navi .swiper-button-prev:after {
+    width: calc(var(--double-spacing) * 1.5);
+  }
+  article #project-carousel .swiper-slider .swiper-navi .swiper-button-next {
+    right: var(--spacing);
+  }
+  article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:after {
+    width: calc(var(--double-spacing) * 1.5);
+  }
+  .journal-banner {
+    display: none;
   }
 }
 
