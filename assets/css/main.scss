@@ -457,11 +457,13 @@ main {
       stroke-width: 3px;
     }
   }
-  .project-panel-body {
+  .project-panel-sheet {
     background-color: white;
-    .container {
+    min-height: 100vh;
+    .project-panel-body {
       opacity: 0;
       transition: opacity .4s;
+      padding: var(--double-spacing);
       &.loaded {
         opacity: 1;
       }
@@ -481,7 +483,7 @@ main {
   z-index: 10002;
   overflow-y: auto;
   background-color: white;
-
+  padding: var(--spacing) 0;
   transform: translateX(100%);
   opacity: 0;
   transition: transform .5s ease-in-out, opacity 0s .5s;

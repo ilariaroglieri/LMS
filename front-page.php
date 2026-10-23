@@ -48,8 +48,8 @@
       <line class="st0" x1="1.3" y1="1.3" x2="44.5" y2="44.5"/>
     </svg>
   </button>
-  <div class="project-panel-body" data-panel-body>
-    <div class="container">
+  <div class="project-panel-sheet">  
+    <div class="project-panel-body" data-panel-body>
       <!-- js will load the content -->
     </div>
   </div>

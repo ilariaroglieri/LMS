@@ -93,8 +93,8 @@ function dynamicLoad({ panelId, trigger, onLoad, onOpen, bodyLocked }) {
   const panel = document.getElementById(panelId);
   if (!panel) return null;
 
-  const body = panel.querySelector('[data-panel-body] .container');
-  const close = panel.querySelector('[data-panel-close]');
+  const panelBody = panel.querySelector('[data-panel-body]');
+  const closeBtn = panel.querySelector('[data-panel-close]');
   const endpoint = panel.dataset.endpoint;
   let cleanup = null;
   let currentId = null;
@@ -105,15 +105,16 @@ function dynamicLoad({ panelId, trigger, onLoad, onOpen, bodyLocked }) {
       cleanup = null;
     }
 
-    body.classList.remove('loaded');
-    body.innerHTML = '';
+    panelBody.classList.remove('loaded');
+    panelBody.innerHTML = '';
 
     const response = await fetch(endpoint + id);
     const data = await response.json();
 
-    body.innerHTML = data.html;
-    if (onLoad) cleanup = onLoad(body) || null; // init + salva la pulizia per il prossimo load
-    body.classList.add('loaded');
+    panelBody.innerHTML = data.html;
+    if (onLoad) cleanup = onLoad(panelBody, { panel, closePanel}) || null; // init + salva la pulizia per il prossimo load
+    
+    panelBody.classList.add('loaded');
   }
 
   function openPanel(id) {
@@ -132,6 +133,7 @@ function dynamicLoad({ panelId, trigger, onLoad, onOpen, bodyLocked }) {
 
     // aspetta la fine delle transizioni del pannello
     await Promise.all(panel.getAnimations().map((a) => a.finished.catch(() => {})));
+    panel.scrollTop = 0;
   }
 
   document.addEventListener('click', async (e) => {
@@ -150,9 +152,9 @@ function dynamicLoad({ panelId, trigger, onLoad, onOpen, bodyLocked }) {
     openPanel(id);
   });
 
-  close.addEventListener('click', closePanel);
+  closeBtn.addEventListener('click', closePanel);
 
-  return { close: closePanel };
+  return { closePanel };
 }
 
 // single page slider
@@ -185,8 +187,6 @@ function archiveFilters() {
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const cat = btn.dataset.cat;
-
-      console.log('click');
 
       buttons.forEach(b => {
         const isActive = b === btn;
@@ -253,11 +253,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	dynamicLoad({
 	  panelId: 'project-panel',
 	  trigger: '.project .overall',
-	  onLoad: (root) => {
-	    const slider = initSlider(root);
-	    return () => slider?.destroy(true, true);
+	  onLoad: (root, { panel, closePanel }) => {
+	    const slider = initSlider(root); // init slider
+
+      function onScroll() {
+        const end = panel.scrollTop + panel.clientHeight >= panel.scrollHeight - 1;
+
+        if (end) closePanel();
+      }
+
+      panel.addEventListener('scroll', onScroll, {passive: true});
+
+	    return () => {
+        slider?.destroy(true, true);
+        panel.removeEventListener('scroll', onScroll);
+      };
 	  },
-	  onOpen: () => journalPanel?.close(),
+	  onOpen: () => journalPanel?.closePanel(),
 	  bodyLocked: true,
 	});
 

@@ -1222,14 +1222,16 @@ main section.project .project-thumb.loaded {
   stroke: #000;
   stroke-width: 3px;
 }
-#project-panel .project-panel-body {
+#project-panel .project-panel-sheet {
   background-color: white;
+  min-height: 100vh;
 }
-#project-panel .project-panel-body .container {
+#project-panel .project-panel-sheet .project-panel-body {
   opacity: 0;
   transition: opacity 0.4s;
+  padding: var(--double-spacing);
 }
-#project-panel .project-panel-body .container.loaded {
+#project-panel .project-panel-sheet .project-panel-body.loaded {
   opacity: 1;
 }
 #project-panel .panel-spacer {
@@ -1245,6 +1247,7 @@ main section.project .project-thumb.loaded {
   z-index: 10002;
   overflow-y: auto;
   background-color: white;
+  padding: var(--spacing) 0;
   transform: translateX(100%);
   opacity: 0;
   transition: transform 0.5s ease-in-out, opacity 0s 0.5s;
