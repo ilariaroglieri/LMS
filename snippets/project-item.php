@@ -12,7 +12,7 @@
       </figure>
     <?php endif; ?>
 
-    <div id="project-txt" class="wysiwyg s-regular spacing-b-6 spacing-m-b-2">
+    <div id="project-txt" class="wysiwyg s-regular s-m-small spacing-b-6 spacing-m-b-2">
       <?php the_content(); ?>
     </div>
 

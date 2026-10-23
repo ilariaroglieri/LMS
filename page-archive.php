@@ -31,7 +31,7 @@
       <div id="projects-container" class="d-flex flex-row wrap">
         <?php while ( $projects->have_posts() ): $projects->the_post();?>
           <?php $categories = get_the_category(); ?>
-          <div class="single-project p-relative spacing-b-6 d-half m-whole" data-project-cat="<?= esc_html($categories[0]->slug); ?>">
+          <div class="single-project p-relative spacing-b-6 spacing-m-b-3 d-half m-whole" data-project-cat="<?= esc_html($categories[0]->slug); ?>">
             <a class="p-absolute overall" href="<?php the_permalink(); ?>"></a>
 
             <?php if ( has_post_thumbnail() ) : 
@@ -47,7 +47,7 @@
               </figure>
             <?php endif; ?>
             <?php if ($categories): ?>
-              <h3 class="project-category uppercase s-small spacing-b-half" data-cat="<?= $categories[0]->slug ?>"><?= esc_html( $categories[0]->name ); ?></h3>
+              <h3 class="project-category uppercase s-small s-m-small spacing-b-half" data-cat="<?= $categories[0]->slug ?>"><?= esc_html( $categories[0]->name ); ?></h3>
             <?php endif; ?>
             <h2 class="s-regular uppercase"><?php the_title(); ?></h2>
           </div>

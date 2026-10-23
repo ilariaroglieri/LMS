@@ -22,7 +22,7 @@ if ( $journalEntries->have_posts() ): ?>
           <div class="journal-content-inner">
             <?php if ( has_post_thumbnail() ) : the_post_thumbnail('medium', array('class' => 'journal-thumb')); endif; ?>
 
-            <div class="journal-txt wysiwyg s-small spacing-t-4">
+            <div class="journal-txt wysiwyg s-small spacing-t-4 spacing-m-t-2">
               <?php the_content(); ?>
             </div>
           </div>

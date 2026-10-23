@@ -194,5 +194,28 @@
   .journal-banner {
     display: none;
   }
+
+  #content-archive {
+    grid-template-columns: 1fr;
+    #journal-container {
+      display: none;
+    }
+
+    #cats-container {
+      margin-bottom: var(--double-spacing);
+      .button-container {
+        padding: var(--spacing) 0;
+      }
+    }
+  }
+
+  #journal-container {
+    .journal-item {
+      padding-top: var(--spacing);
+      .journal-content .journal-content-inner {
+        padding-top: var(--spacing);
+      }
+    }
+  }
 }
 

@@ -57,8 +57,8 @@ $font-sizes: (
   'large': clamp(36px, 3vw, 40px),
   'medium':  clamp(20px, 1.7vw, 28px),
   'regular-2': clamp(16px, 1.4vw, 24px),
-  'regular': clamp(16px, 1.4vw, 20px),
-  'small': clamp(12px, 1.11vw, 16px),
+  'regular': 20px,
+  'small': 16px,
 );
 
 @each $name, $size in $font-sizes {
