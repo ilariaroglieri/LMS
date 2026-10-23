@@ -220,7 +220,7 @@ button {
 
 .container {
   width: calc(100% - var(--double-spacing) * 2);
-  margin: var(--double-spacing);
+  margin: 0 var(--double-spacing);
 }
 
 .container-fluid {
@@ -438,8 +438,6 @@ main {
   bottom: 0;
   z-index: 10000;
   overflow-y: auto;
-  background-color: white;
-
   transform: translateY(100%);
   opacity: 0;
   transition: transform .5s ease-in-out, opacity 0s .5s;
@@ -460,11 +458,17 @@ main {
     }
   }
   .project-panel-body {
-    opacity: 0;
-    transition: opacity .4s;
-    &.loaded {
-      opacity: 1;
+    background-color: white;
+    .container {
+      opacity: 0;
+      transition: opacity .4s;
+      &.loaded {
+        opacity: 1;
+      }
     }
+  }
+  .panel-spacer {
+    height: 100vh;
   }
 }
 

@@ -48,7 +48,12 @@
       <line class="st0" x1="1.3" y1="1.3" x2="44.5" y2="44.5"/>
     </svg>
   </button>
-  <div class="container project-panel-body" data-panel-body></div>
+  <div class="project-panel-body" data-panel-body>
+    <div class="container">
+      <!-- js will load the content -->
+    </div>
+  </div>
+  <div class="panel-spacer"></div>
 </div>
 
 <?php get_template_part( 'snippets/journal-panel' ); ?>

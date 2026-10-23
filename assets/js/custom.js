@@ -93,7 +93,7 @@ function dynamicLoad({ panelId, trigger, onLoad, onOpen, bodyLocked }) {
   const panel = document.getElementById(panelId);
   if (!panel) return null;
 
-  const body = panel.querySelector('[data-panel-body]');
+  const body = panel.querySelector('[data-panel-body] .container');
   const close = panel.querySelector('[data-panel-close]');
   const endpoint = panel.dataset.endpoint;
   let cleanup = null;

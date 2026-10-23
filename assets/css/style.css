@@ -958,7 +958,7 @@ button {
 
 .container {
   width: calc(100% - var(--double-spacing) * 2);
-  margin: var(--double-spacing);
+  margin: 0 var(--double-spacing);
 }
 
 .container-fluid {
@@ -1202,7 +1202,6 @@ main section.project .project-thumb.loaded {
   bottom: 0;
   z-index: 10000;
   overflow-y: auto;
-  background-color: white;
   transform: translateY(100%);
   opacity: 0;
   transition: transform 0.5s ease-in-out, opacity 0s 0.5s;
@@ -1224,11 +1223,17 @@ main section.project .project-thumb.loaded {
   stroke-width: 3px;
 }
 #project-panel .project-panel-body {
+  background-color: white;
+}
+#project-panel .project-panel-body .container {
   opacity: 0;
   transition: opacity 0.4s;
 }
-#project-panel .project-panel-body.loaded {
+#project-panel .project-panel-body .container.loaded {
   opacity: 1;
+}
+#project-panel .panel-spacer {
+  height: 100vh;
 }
 
 #journal-panel {
