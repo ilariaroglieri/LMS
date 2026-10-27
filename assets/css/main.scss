@@ -472,6 +472,7 @@ main {
   opacity: 0;
   pointer-events: none;
   transition: opacity .5s;
+  z-index: 100009;
   #intro-panel-inner {
     width: calc($col*8 - var(--double-spacing));
     margin: 0 auto;
@@ -575,7 +576,7 @@ article {
     height: auto;
   }
   #project-txt, #project-info {
-    // margin-left: $col*1.5;
+    margin-right: $col*1.5;
     .project-info-label {
       padding-right: $col;
     }

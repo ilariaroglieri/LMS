@@ -1,11 +1,13 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('d-flex flex-row v-center'); ?>>
-  <div class="d-two-thirds t-whole">
+<article id="post-<?php the_ID(); ?>" <?php post_class('d-flex flex-row d-column center'); ?>>
+  <div class="d-whole spacing-t-4 spacing-m-t-2">
     <?php $categories = get_the_category(); 
     if ($categories): ?>
       <h2 id="project-cat" class="project-category uppercase s-medium s-m-small t-center spacing-b-4 spacing-m-b-2" data-reveal="parent"><?= esc_html( $categories[0]->name ); ?></h2>
     <?php endif; ?>
-    <h1 id="project-title" class="s-huge-2 uppercase t-center spacing-b-6 spacing-m-b-2" data-reveal="parent"><?php the_title() ?></h1>
+    <h1 id="project-title" class="s-huge uppercase t-center spacing-b-6 spacing-m-b-2" data-reveal="parent"><?php the_title() ?></h1>
+  </div>
 
+  <div class="d-two-thirds t-whole">
     <?php if ( has_post_thumbnail() ) : ?> 
       <figure id="project-img" class="d-flex v-center spacing-b-6 spacing-m-b-2" data-reveal="parent">
         <?php the_post_thumbnail('full'); ?>

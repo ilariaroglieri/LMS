@@ -22,7 +22,7 @@ Version: 1.0
 }
 
 .s-large {
-  font-size: clamp(36px, 3vw, 40px);
+  font-size: clamp(20px, 3vw, 40px);
 }
 
 .s-medium {
@@ -47,7 +47,7 @@ Version: 1.0
   --double-spacing: 24px;
   --s-huge: clamp(60px, 7.5vw, 105px);
   --s-huge-2: clamp(36px, 4.5vw, 65px);
-  --s-large: clamp(36px, 3vw, 40px);
+  --s-large: clamp(20px, 3vw, 40px);
   --s-medium: clamp(20px, 1.7vw, 28px);
   --s-regular-2: clamp(16px, 1.4vw, 24px);
   --s-regular: 20px;
@@ -1341,6 +1341,7 @@ main section.project .project-thumb.loaded {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s;
+  z-index: 100009;
 }
 #intro-panel #intro-panel-inner {
   width: calc(66.6664% - var(--double-spacing));
@@ -1440,6 +1441,9 @@ main section.project .project-thumb.loaded {
 article #project-img img {
   width: 100%;
   height: auto;
+}
+article #project-txt, article #project-info {
+  margin-right: 12.49995%;
 }
 article #project-txt .project-info-label, article #project-info .project-info-label {
   padding-right: 8.3333%;
@@ -1741,6 +1745,11 @@ footer {
   header div[class*=menu-1] ul li.wpml-ls-item + .wpml-ls-item:before {
     content: "/";
     display: flex;
+  }
+  #intro-panel #intro-panel-inner {
+    width: 90%;
+    margin-left: 0;
+    padding: 0 var(--double-spacing) var(--double-spacing);
   }
   #project-panel button.project-panel-close {
     width: var(--double-spacing);

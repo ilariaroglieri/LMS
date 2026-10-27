@@ -160,6 +160,14 @@
     }
   }
 
+  #intro-panel {
+    #intro-panel-inner {
+      width: 90%;
+      margin-left: 0;
+      padding: 0 var(--double-spacing) var(--double-spacing);
+    }
+  }
+
   #project-panel {
     button.project-panel-close {
       width: var(--double-spacing);

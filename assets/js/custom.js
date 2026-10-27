@@ -230,7 +230,9 @@ function archiveFilters() {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', async () => {
+  await document.fonts.ready;
+  
 	marquees();
 	randomImg();
 	journalAccordion();
