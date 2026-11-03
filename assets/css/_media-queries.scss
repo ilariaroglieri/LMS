@@ -179,6 +179,9 @@
   } 
 
   article {
+    #project-txt, #project-info {
+      margin-right: 0;
+    }
     #project-carousel {
       .swiper-slider {
         .swiper-navi {

@@ -50,11 +50,11 @@
           $val = get_sub_field('value'); ?>
 
           <div class="project-info-label d-half spacing-b-4 spacing-m-b-2" data-reveal="child">
-            <span class="s-regular-2 s-m-xsmall uppercase"><?= $label ?></span>
+            <span class="s-small uppercase"><?= $label ?></span>
           </div>
 
           <div class="project-info-value d-half spacing-b-4 spacing-m-b-2" data-reveal="child">
-            <h3 class="s-regular-2 s-m-xsmall"><?= $val ?></h3>
+            <h3 class="s-small"><?= $val ?></h3>
           </div>
 
         <?php endwhile; ?>

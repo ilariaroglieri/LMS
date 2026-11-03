@@ -274,7 +274,7 @@ header {
         & + .wpml-ls-item {
           &:before {
             content: '/';
-            display: flex;
+            display: inline-block;
           }
         }
         &.wpml-ls-last-item {
@@ -488,11 +488,11 @@ main {
 
 #project-panel {
   position: fixed;
-  top: var(--header-height);
+  top: calc( var(--header-height) - var(--marquee-height) + 2px);
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10000;
+  z-index: 100001;
   overflow-y: auto;
   transform: translateY(100%);
   opacity: 0;
@@ -658,8 +658,9 @@ article {
       transition: all .2s;
       &:before {
         content: url('../img/LMS_arrow_right.svg');
-        display: flex;
+        display: inline-block;
         height: .9em;
+        width: .9em;
         margin-right: var(--spacing);
       }
       &:hover {
@@ -687,8 +688,9 @@ article {
         align-items: center;
         &:before {
           content: url('../img/LMS_arrow_right.svg');
-          display: flex;
+          display: inline-block;
           height: .9em;
+          width: .9em;
           margin-right: var(--spacing);
         }
       }

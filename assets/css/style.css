@@ -14,11 +14,7 @@ Version: 1.0
 }
 
 .s-huge {
-  font-size: clamp(60px, 7.5vw, 105px);
-}
-
-.s-huge-2 {
-  font-size: clamp(36px, 4.5vw, 65px);
+  font-size: clamp(45px, 7.5vw, 105px);
 }
 
 .s-large {
@@ -27,10 +23,6 @@ Version: 1.0
 
 .s-medium {
   font-size: clamp(20px, 1.7vw, 28px);
-}
-
-.s-regular-2, .wysiwyg.s-regular-2 {
-  font-size: clamp(16px, 1.4vw, 24px);
 }
 
 .s-regular, body {
@@ -45,11 +37,9 @@ Version: 1.0
   --spacing: 12px;
   --half-spacing: 6px;
   --double-spacing: 24px;
-  --s-huge: clamp(60px, 7.5vw, 105px);
-  --s-huge-2: clamp(36px, 4.5vw, 65px);
+  --s-huge: clamp(45px, 7.5vw, 105px);
   --s-large: clamp(20px, 3vw, 40px);
   --s-medium: clamp(20px, 1.7vw, 28px);
-  --s-regular-2: clamp(16px, 1.4vw, 24px);
   --s-regular: 20px;
   --s-small: 16px;
 }
@@ -1120,7 +1110,7 @@ header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-first-item {
 }
 header div[class*=menu-1] ul li.wpml-ls-item + .wpml-ls-item:before {
   content: "/";
-  display: flex;
+  display: inline-block;
 }
 header div[class*=menu-1] ul li.wpml-ls-item.wpml-ls-last-item {
   margin-right: var(--spacing);
@@ -1357,11 +1347,11 @@ main section.project .project-thumb.loaded {
 
 #project-panel {
   position: fixed;
-  top: var(--header-height);
+  top: calc(var(--header-height) - var(--marquee-height) + 2px);
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10000;
+  z-index: 100001;
   overflow-y: auto;
   transform: translateY(100%);
   opacity: 0;
@@ -1522,8 +1512,9 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 }
 #content-archive #cats-container button:before {
   content: url("../img/LMS_arrow_right.svg");
-  display: flex;
+  display: inline-block;
   height: 0.9em;
+  width: 0.9em;
   margin-right: var(--spacing);
 }
 #content-archive #cats-container button:hover {
@@ -1552,8 +1543,9 @@ article #project-carousel .swiper-slider .swiper-navi .swiper-button-next:hover 
 }
 #content-archive #projects-container .single-project .project-category:before {
   content: url("../img/LMS_arrow_right.svg");
-  display: flex;
+  display: inline-block;
   height: 0.9em;
+  width: 0.9em;
   margin-right: var(--spacing);
 }
 #content-archive #projects-container .single-project figure {
@@ -1757,6 +1749,9 @@ footer {
   }
   #project-panel button.project-panel-close svg {
     stroke-width: 6px;
+  }
+  article #project-txt, article #project-info {
+    margin-right: 0;
   }
   article #project-carousel .swiper-slider .swiper-navi .swiper-button-prev {
     left: var(--spacing);
